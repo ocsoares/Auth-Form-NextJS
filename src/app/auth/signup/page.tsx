@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormBox } from "./components/FormBox";
+import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
 
 export default function SignUpForm() {
@@ -42,7 +42,7 @@ export default function SignUpForm() {
             <Lock color="secondary" />
           </Avatar>
           <Typography variant="h5">Sign up</Typography>
-          <FormBox>
+          <SignUpBox>
             <Grid container spacing={5}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -118,7 +118,7 @@ export default function SignUpForm() {
                 </Link>
               </Grid>
             </Grid>
-          </FormBox>
+          </SignUpBox>
         </Box>
       </Paper>
     </Container>

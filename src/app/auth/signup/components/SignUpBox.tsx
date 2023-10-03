@@ -3,7 +3,7 @@
 import { Box } from "@mui/material";
 import { PropsWithChildren } from "react";
 
-export function FormBox({ children }: PropsWithChildren) {
+export function SignUpBox({ children }: PropsWithChildren) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
