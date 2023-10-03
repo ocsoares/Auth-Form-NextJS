@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import { PropsWithChildren } from "react";
 import { DarkTheme } from "../themes/DarkTheme";
 
