@@ -86,11 +86,19 @@ export default function SignUpForm() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
+                <Typography variant="body2" color={"whitesmoke"}>
+                  Already have an account?{" "}
+                  <Link
+                    href="login"
+                    variant="body2"
+                    underline="hover"
+                    color={"slateblue"}
+                  >
+                    Log in
+                  </Link>
+                </Typography>
               </Grid>
             </Grid>
           </SignUpBox>
