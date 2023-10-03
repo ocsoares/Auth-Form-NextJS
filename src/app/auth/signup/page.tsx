@@ -6,11 +6,11 @@ import {
   Grid,
   Link,
   Paper,
-  TextField,
   Typography,
 } from "@mui/material";
 import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
+import { SignUpTextField } from "./components/SignUpTextField";
 
 export default function SignUpForm() {
   return (
@@ -44,64 +44,39 @@ export default function SignUpForm() {
           <Typography variant="h5">Sign up</Typography>
           <SignUpBox>
             <Grid container spacing={5}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  color="secondary"
-                  autoComplete="none"
-                  name="first-name"
-                  required
-                  fullWidth
-                  id="first-name"
-                  label="First name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  color="secondary"
-                  required
-                  fullWidth
-                  id="last-name"
-                  label="Last name"
-                  name="last-name"
-                  autoComplete="none"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="none"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="none"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  color="secondary"
-                  required
-                  fullWidth
-                  name="confirm-password"
-                  label="Confirm your password"
-                  type="password"
-                  id="confirm-password"
-                  autoComplete="none"
-                />
-              </Grid>
+              <SignUpTextField
+                autoFocus={true}
+                sm={6}
+                id="first-name"
+                name="first-name"
+                type="text"
+                label="First name"
+              />
+              <SignUpTextField
+                sm={6}
+                id="last-name"
+                name="last-name"
+                type="text"
+                label="Last name"
+              />
+              <SignUpTextField
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+              />
+              <SignUpTextField
+                id="password"
+                name="password"
+                type="password"
+                label="Password"
+              />
+              <SignUpTextField
+                id="confirm-password"
+                name="confirm-password"
+                type="password"
+                label="Confirm your password"
+              />
             </Grid>
             <Button
               type="submit"
