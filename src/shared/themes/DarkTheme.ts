@@ -12,7 +12,7 @@ export const DarkTheme = createTheme({
       contrastText: grey["500"],
     },
     secondary: {
-      main: grey["500"],
+      main: grey["300"],
       dark: teal["800"],
       light: teal["500"],
       contrastText: deepPurple["200"],
