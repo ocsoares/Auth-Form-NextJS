@@ -33,7 +33,7 @@ export default function RegistrationForm() {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="given-name"
+                autoComplete="none"
                 name="firstName"
                 required
                 fullWidth
@@ -49,7 +49,7 @@ export default function RegistrationForm() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="family-name"
+                autoComplete="none"
               />
             </Grid>
             <Grid item xs={12}>
@@ -59,7 +59,7 @@ export default function RegistrationForm() {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                autoComplete="none"
               />
             </Grid>
             <Grid item xs={12}>
@@ -70,7 +70,7 @@ export default function RegistrationForm() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="new-password"
+                autoComplete="none"
               />
             </Grid>
             <Grid item xs={12}>
