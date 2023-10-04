@@ -105,9 +105,6 @@ export default function SignUpForm() {
           </SignUpBox>
         </Box>
       </Paper>
-      <Typography variant="body2" color="textSecondary" align="center">
-        Copyright © {new Date().getFullYear()} Cauã Soares.
-      </Typography>
     </Container>
   );
 }
