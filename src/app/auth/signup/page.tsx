@@ -19,8 +19,9 @@ export default function SignUpForm() {
       maxWidth="xs"
       sx={{
         display: "flex",
-        justifyContent: "center",
+        flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
         minHeight: "100vh",
       }}
     >
@@ -104,6 +105,9 @@ export default function SignUpForm() {
           </SignUpBox>
         </Box>
       </Paper>
+      <Typography variant="body2" color="textSecondary" align="center">
+        Copyright © {new Date().getFullYear()} Cauã Soares.
+      </Typography>
     </Container>
   );
 }
