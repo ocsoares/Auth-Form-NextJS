@@ -1,9 +1,10 @@
-import { Box, Container, Grid, Link, Paper, Typography } from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
 import { AuthTextField } from "../components/AuthTextField";
 import { AuthAvatar } from "../components/AuthAvatar";
 import { AuthButton } from "../components/AuthButton";
+import { AuthTextLink } from "../components/AuthTextLink";
 
 export default function SignUpForm() {
   return (
@@ -71,21 +72,11 @@ export default function SignUpForm() {
               />
             </Grid>
             <AuthButton text="Sign Up" />
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Typography variant="body2" color={"whitesmoke"}>
-                  Already have an account?{" "}
-                  <Link
-                    href="login"
-                    variant="body2"
-                    underline="hover"
-                    color={"slateblue"}
-                  >
-                    Log in
-                  </Link>
-                </Typography>
-              </Grid>
-            </Grid>
+            <AuthTextLink
+              text="Already have an account? "
+              link="login"
+              textLink="Log in"
+            />
           </SignUpBox>
         </Box>
       </Paper>

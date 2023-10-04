@@ -4,7 +4,6 @@ import {
   Container,
   FormControlLabel,
   Grid,
-  Link,
   Paper,
   Typography,
 } from "@mui/material";
@@ -13,6 +12,7 @@ import { LoginBox } from "./components/LoginBox";
 import { AuthTextField } from "../components/AuthTextField";
 import { AuthAvatar } from "../components/AuthAvatar";
 import { AuthButton } from "../components/AuthButton";
+import { AuthTextLink } from "../components/AuthTextLink";
 
 export default function LoginForm() {
   return (
@@ -65,21 +65,11 @@ export default function LoginForm() {
               />
             </Grid>
             <AuthButton text="Login" />
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Typography variant="body2" color={"whitesmoke"}>
-                  {`Don't have an account?`}{" "}
-                  <Link
-                    href="signup"
-                    variant="body2"
-                    underline="hover"
-                    color={"slateblue"}
-                  >
-                    Sign up
-                  </Link>
-                </Typography>
-              </Grid>
-            </Grid>
+            <AuthTextLink
+              text="Don't have an account? "
+              link="signup"
+              textLink="Sign up"
+            />
           </LoginBox>
         </Box>
       </Paper>
