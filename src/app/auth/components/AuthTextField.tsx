@@ -5,7 +5,7 @@
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 
-interface ISignUpGridProps {
+interface IAuthTextFieldProps {
   sm?: number;
   autoFocus?: boolean;
   name: string;
@@ -14,14 +14,14 @@ interface ISignUpGridProps {
   label: string;
 }
 
-export function SignUpTextField({
+export function AuthTextField({
   sm,
   autoFocus = false,
   name,
   id,
   type,
   label,
-}: ISignUpGridProps) {
+}: IAuthTextFieldProps) {
   return (
     <Grid item xs={12} sm={sm}>
       <TextField

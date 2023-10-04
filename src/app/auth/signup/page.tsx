@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
-import { SignUpTextField } from "./components/SignUpTextField";
+import { AuthTextField } from "../components/AuthTextField";
 
 export default function SignUpForm() {
   return (
@@ -45,7 +45,7 @@ export default function SignUpForm() {
           <Typography variant="h5">Sign up</Typography>
           <SignUpBox>
             <Grid container spacing={5}>
-              <SignUpTextField
+              <AuthTextField
                 autoFocus={true}
                 sm={6}
                 id="first-name"
@@ -53,26 +53,26 @@ export default function SignUpForm() {
                 type="text"
                 label="First name"
               />
-              <SignUpTextField
+              <AuthTextField
                 sm={6}
                 id="last-name"
                 name="last-name"
                 type="text"
                 label="Last name"
               />
-              <SignUpTextField
+              <AuthTextField
                 id="email"
                 name="email"
                 type="email"
                 label="Email"
               />
-              <SignUpTextField
+              <AuthTextField
                 id="password"
                 name="password"
                 type="password"
                 label="Password"
               />
-              <SignUpTextField
+              <AuthTextField
                 id="confirm-password"
                 name="confirm-password"
                 type="password"
