@@ -44,7 +44,7 @@ export default function SignUpForm() {
           </Avatar>
           <Typography variant="h5">Sign up</Typography>
           <SignUpBox>
-            <Grid container spacing={5}>
+            <Grid container spacing={4}>
               <AuthTextField
                 autoFocus={true}
                 sm={6}
