@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Checkbox,
   Container,
   FormControlLabel,
@@ -13,6 +12,7 @@ import { LockPerson } from "@mui/icons-material";
 import { LoginBox } from "./components/LoginBox";
 import { AuthTextField } from "../components/AuthTextField";
 import { AuthAvatar } from "../components/AuthAvatar";
+import { AuthButton } from "../components/AuthButton";
 
 export default function LoginForm() {
   return (
@@ -64,14 +64,7 @@ export default function LoginForm() {
                 sx={{ mt: 1, ml: 2.6 }}
               />
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Login
-            </Button>
+            <AuthButton text="Login" />
             <Grid container justifyContent="center">
               <Grid item>
                 <Typography variant="body2" color={"whitesmoke"}>

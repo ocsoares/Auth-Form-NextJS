@@ -1,16 +1,9 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Link, Paper, Typography } from "@mui/material";
 import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
 import { AuthTextField } from "../components/AuthTextField";
 import { AuthAvatar } from "../components/AuthAvatar";
+import { AuthButton } from "../components/AuthButton";
 
 export default function SignUpForm() {
   return (
@@ -77,14 +70,7 @@ export default function SignUpForm() {
                 label="Confirm your password"
               />
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
+            <AuthButton text="Sign Up" />
             <Grid container justifyContent="center">
               <Grid item>
                 <Typography variant="body2" color={"whitesmoke"}>
