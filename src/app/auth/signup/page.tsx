@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   Container,
@@ -11,6 +10,7 @@ import {
 import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
 import { AuthTextField } from "../components/AuthTextField";
+import { AuthAvatar } from "../components/AuthAvatar";
 
 export default function SignUpForm() {
   return (
@@ -39,9 +39,7 @@ export default function SignUpForm() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#8F3098" }}>
-            <Lock color="secondary" />
-          </Avatar>
+          <AuthAvatar avatar={<Lock color="secondary" />} />
           <Typography variant="h5">Sign up</Typography>
           <SignUpBox>
             <Grid container spacing={4}>

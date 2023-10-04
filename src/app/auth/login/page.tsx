@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   Checkbox,
@@ -13,6 +12,7 @@ import {
 import { LockPerson } from "@mui/icons-material";
 import { LoginBox } from "./components/LoginBox";
 import { AuthTextField } from "../components/AuthTextField";
+import { AuthAvatar } from "../components/AuthAvatar";
 
 export default function LoginForm() {
   return (
@@ -41,9 +41,7 @@ export default function LoginForm() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "#8F3098" }}>
-            <LockPerson color="secondary" />
-          </Avatar>
+          <AuthAvatar avatar={<LockPerson color="secondary" />} />
           <Typography variant="h5">Login</Typography>
           <LoginBox>
             <Grid container spacing={4}>
