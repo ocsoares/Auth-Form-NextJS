@@ -59,7 +59,7 @@ export default function LoginForm() {
                 label="Password"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="secondary" />}
                 label="Remember me"
                 sx={{ mt: 1, ml: 2.6 }}
               />
