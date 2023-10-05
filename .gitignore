@@ -37,3 +37,6 @@ next-env.d.ts
 # editor directories and files
 .vscode/*
 !.vscode/extensions.json
+
+# my files
+TODO.md
