@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 
-export function AuthForm() {
+export function AuthSignUpForm() {
   const { register, handleSubmit, control } = useForm();
 
   const handleSubmitData = (data: any) => {
