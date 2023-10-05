@@ -7,11 +7,19 @@ import { Box } from "@mui/material";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 
-export function AuthSignUpForm() {
-  const { register, handleSubmit, control } = useForm();
+interface ISignUpData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
-  const handleSubmitData = (data: any) => {
-    console.log("DATA:", data);
+export function AuthSignUpForm() {
+  const { register, handleSubmit, control } = useForm<ISignUpData>();
+
+  const handleSubmitData = (data: ISignUpData) => {
+    console.log("SIGNUP DATA:", data);
   };
 
   return (
@@ -26,18 +34,18 @@ export function AuthSignUpForm() {
           control={control}
           autoFocus={true}
           sm={6}
-          id="first-name"
+          id="firstName"
           type="text"
           label="First name"
-          {...register("first-name")}
+          {...register("firstName")}
         />
         <AuthTextField
           control={control}
           sm={6}
-          id="last-name"
+          id="lastName"
           type="text"
           label="Last name"
-          {...register("last-name")}
+          {...register("lastName")}
         />
         <AuthTextField
           control={control}
@@ -55,10 +63,10 @@ export function AuthSignUpForm() {
         />
         <AuthTextField
           control={control}
-          id="confirm-password"
+          id="confirmPassword"
           type="password"
           label="Confirm your password"
-          {...register("confirm-password")}
+          {...register("confirmPassword")}
         />
       </Grid>
       <AuthButton text="Sign Up" />
