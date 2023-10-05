@@ -1,18 +1,7 @@
-import {
-  Box,
-  Checkbox,
-  Container,
-  FormControlLabel,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 import { LockPerson } from "@mui/icons-material";
-import { LoginBox } from "./components/LoginBox";
-import { AuthTextField } from "../components/AuthTextField";
+import { AuthLoginForm } from "./components/AuthLoginForm";
 import { AuthAvatar } from "../components/AuthAvatar";
-import { AuthButton } from "../components/AuthButton";
-import { AuthTextLink } from "../components/AuthTextLink";
 
 export default function LoginForm() {
   return (
@@ -43,34 +32,7 @@ export default function LoginForm() {
         >
           <AuthAvatar avatar={<LockPerson color="secondary" />} />
           <Typography variant="h5">Login</Typography>
-          <LoginBox>
-            <Grid container spacing={4}>
-              <AuthTextField
-                autoFocus={true}
-                id="email"
-                name="email"
-                type="email"
-                label="Email"
-              />
-              <AuthTextField
-                id="password"
-                name="password"
-                type="password"
-                label="Password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="secondary" />}
-                label="Remember me"
-                sx={{ mt: 1, ml: 2.6 }}
-              />
-            </Grid>
-            <AuthButton text="Login" />
-            <AuthTextLink
-              text="Don't have an account? "
-              link="signup"
-              textLink="Sign up"
-            />
-          </LoginBox>
+          <AuthLoginForm />
         </Box>
       </Paper>
     </Container>
