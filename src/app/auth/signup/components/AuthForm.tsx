@@ -1,7 +1,7 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import { AuthTextField } from "../../components/AuthTextField";
+import AuthTextField from "../../components/AuthTextField";
 import { useForm } from "react-hook-form";
 import { Box } from "@mui/material";
 import { AuthButton } from "../../components/AuthButton";

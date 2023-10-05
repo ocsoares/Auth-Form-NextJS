@@ -2,6 +2,7 @@
 // ----------------------------
 // import { Grid, TextField } from "@mui/material";
 
+import React from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Control, Controller, FieldValues } from "react-hook-form";
@@ -16,15 +17,19 @@ interface IAuthTextFieldProps {
   label: string;
 }
 
-export function AuthTextField({
-  control,
-  name,
-  sm,
-  autoFocus = false,
-  id,
-  type,
-  label,
-}: IAuthTextFieldProps) {
+const AuthTextField = React.forwardRef(function AuthTextField(
+  {
+    control,
+    name,
+    sm,
+    autoFocus = false,
+    id,
+    type,
+    label,
+  }: IAuthTextFieldProps,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ref,
+) {
   return (
     <Controller
       control={control}
@@ -32,7 +37,7 @@ export function AuthTextField({
       rules={{
         required: "This is required",
       }}
-      defaultValue={""}
+      defaultValue=""
       // field, fieldState: { invalid, error }
       render={({ field }) => (
         <Grid item xs={12} sm={sm}>
@@ -51,4 +56,8 @@ export function AuthTextField({
       )}
     />
   );
-}
+});
+
+AuthTextField.displayName = "AuthTextField";
+
+export default AuthTextField;
