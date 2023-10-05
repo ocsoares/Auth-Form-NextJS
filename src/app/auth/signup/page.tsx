@@ -1,10 +1,7 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
-import { SignUpBox } from "./components/SignUpBox";
 import { Lock } from "@mui/icons-material";
 import { AuthAvatar } from "../components/AuthAvatar";
-import { AuthButton } from "../components/AuthButton";
-import { AuthTextLink } from "../components/AuthTextLink";
-import { AuthFormFields } from "./components/AuthFormFields";
+import { AuthForm } from "./components/AuthForm";
 
 export default function SignUpForm() {
   return (
@@ -35,15 +32,7 @@ export default function SignUpForm() {
         >
           <AuthAvatar avatar={<Lock color="secondary" />} />
           <Typography variant="h5">Sign up</Typography>
-          <SignUpBox>
-            <AuthFormFields />
-            <AuthButton text="Sign Up" />
-            <AuthTextLink
-              text="Already have an account? "
-              link="login"
-              textLink="Log in"
-            />
-          </SignUpBox>
+          <AuthForm />
         </Box>
       </Paper>
     </Container>

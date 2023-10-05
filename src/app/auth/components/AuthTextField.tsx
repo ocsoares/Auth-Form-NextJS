@@ -4,46 +4,51 @@
 
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { ChangeEvent } from "react";
+import { Control, Controller, FieldValues } from "react-hook-form";
 
 interface IAuthTextFieldProps {
+  control: Control<FieldValues>;
+  name: string;
   sm?: number;
   autoFocus?: boolean;
-  name: string;
   id: string;
   type: "text" | "email" | "password";
   label: string;
-  value: string;
-  onChange: (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
 }
 
 export function AuthTextField({
+  control,
+  name,
   sm,
   autoFocus = false,
-  name,
   id,
   type,
   label,
-  value,
-  onChange,
 }: IAuthTextFieldProps) {
   return (
-    <Grid item xs={12} sm={sm}>
-      <TextField
-        autoFocus={autoFocus}
-        color="secondary"
-        autoComplete="none"
-        name={name}
-        required
-        fullWidth
-        id={id}
-        type={type}
-        label={label}
-        value={value}
-        onChange={onChange}
-      />
-    </Grid>
+    <Controller
+      control={control}
+      name={name}
+      rules={{
+        required: "This is required",
+      }}
+      defaultValue={""}
+      // field, fieldState: { invalid, error }
+      render={({ field }) => (
+        <Grid item xs={12} sm={sm}>
+          <TextField
+            autoFocus={autoFocus}
+            color="secondary"
+            autoComplete="none"
+            required
+            fullWidth
+            id={id}
+            type={type}
+            label={label}
+            {...field}
+          />
+        </Grid>
+      )}
+    />
   );
 }
