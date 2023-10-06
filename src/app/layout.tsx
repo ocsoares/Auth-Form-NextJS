@@ -28,7 +28,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
               bottom: 0,
               left: 0,
               right: 0,
-              marginBottom: "40px",
+              marginBottom: "20px",
             }}
           >
             Copyright © {new Date().getFullYear()} Cauã Soares.
