@@ -7,6 +7,7 @@ import { AuthTextLink } from "../../components/AuthTextLink";
 import { useForm } from "react-hook-form";
 import { z, ZodType } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 
 interface ILoginData {
   email: string;
@@ -25,6 +26,8 @@ const zodLoginSchema = z.object({
 type ZodLoginSchemaData = z.infer<typeof zodLoginSchema>;
 
 export function AuthLoginForm() {
+  const [remember, setRemember] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -37,6 +40,15 @@ export function AuthLoginForm() {
   const handleSubmitData = (data: ILoginData) => {
     console.log("LOGIN DATA:", data);
   };
+
+  const handleCheckboxChange = () => {
+    // Usar "!" em um Boolean INVERTE o Valor ATUAL do Boolean !!!!
+    setRemember(!remember);
+  };
+
+  useEffect(() => {
+    console.log("Estado do Remember:", remember);
+  }, [remember]);
 
   return (
     <div>
@@ -70,6 +82,7 @@ export function AuthLoginForm() {
             control={<Checkbox value="remember" color="secondary" />}
             label="Remember me"
             sx={{ mt: 1, ml: 2.6 }}
+            onChange={handleCheckboxChange}
           />
         </Grid>
         <AuthButton text="Login" />
