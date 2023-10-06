@@ -19,7 +19,7 @@ const zodLoginSchema = z.object({
     .min(1)
     .email("Formato de email inválido !"),
 
-  password: z.string({ required_error: "A senha é obrigatória !" }),
+  password: z.string({ required_error: "A senha é obrigatória !" }).min(1),
 }) satisfies ZodType<ILoginData>;
 
 type ZodLoginSchemaData = z.infer<typeof zodLoginSchema>;
