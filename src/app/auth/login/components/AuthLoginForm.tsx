@@ -5,14 +5,34 @@ import AuthTextField from "../../components/AuthTextField";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { useForm } from "react-hook-form";
+import { z, ZodType } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface ILoginData {
   email: string;
   password: string;
 }
 
+const zodLoginSchema = z.object({
+  email: z
+    .string({ required_error: "O email é obrigatório !" })
+    .min(1)
+    .email("Formato de email inválido !"),
+
+  password: z.string({ required_error: "A senha é obrigatória !" }),
+}) satisfies ZodType<ILoginData>;
+
+type ZodLoginSchemaData = z.infer<typeof zodLoginSchema>;
+
 export function AuthLoginForm() {
-  const { register, handleSubmit, control } = useForm<ILoginData>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<ZodLoginSchemaData>({
+    resolver: zodResolver(zodLoginSchema),
+  });
 
   const handleSubmitData = (data: ILoginData) => {
     console.log("LOGIN DATA:", data);
@@ -30,6 +50,8 @@ export function AuthLoginForm() {
           <AuthTextField
             control={control}
             autoFocus={true}
+            error={errors.email ? true : false}
+            helperText={errors.email?.message}
             id="email"
             type="email"
             label="Email"
@@ -37,6 +59,8 @@ export function AuthLoginForm() {
           />
           <AuthTextField
             control={control}
+            error={errors.password ? true : false}
+            helperText={errors.password?.message}
             id="password"
             type="password"
             label="Password"
