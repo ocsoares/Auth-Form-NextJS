@@ -12,6 +12,8 @@ interface IAuthTextFieldProps<T extends FieldValues> {
   name: string;
   sm?: number;
   autoFocus?: boolean;
+  error?: boolean;
+  helperText?: string;
   id: string;
   type: "text" | "email" | "password";
   label: string;
@@ -23,6 +25,8 @@ const AuthTextField = React.forwardRef(function AuthTextField(
     name,
     sm,
     autoFocus = false,
+    error = false,
+    helperText = "",
     id,
     type,
     label,
@@ -43,6 +47,8 @@ const AuthTextField = React.forwardRef(function AuthTextField(
         <Grid item xs={12} sm={sm}>
           <TextField
             autoFocus={autoFocus}
+            error={error}
+            helperText={helperText}
             color="secondary"
             autoComplete="none"
             required
