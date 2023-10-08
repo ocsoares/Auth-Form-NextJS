@@ -44,7 +44,7 @@ const zodSignUpSchema = z
 
     email: z
       .string({ required_error: "O email é obrigatório !" })
-      .min(1)
+      .min(1, "O email é obrigatório !")
       .email("Formato de email inválido !"),
 
     password: z
@@ -53,7 +53,7 @@ const zodSignUpSchema = z
 
     confirmPassword: z
       .string({ required_error: "A confirmação de senha é obrigatória !" })
-      .min(1),
+      .min(1, "A confirmação da senha é obrigatória !"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas precisam ser iguais !",
