@@ -153,7 +153,7 @@ export function AuthSignUpForm() {
             {...register("confirmPassword")}
           />
         </Grid>
-        <AuthButton text="Sign Up" />
+        <AuthButton disabled={formSent} text="Sign Up" />
 
         <AuthTextLink
           text="Already have an account? "
