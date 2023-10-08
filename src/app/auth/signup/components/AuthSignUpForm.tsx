@@ -3,12 +3,15 @@
 import Grid from "@mui/material/Grid";
 import AuthTextField from "../../components/AuthTextField";
 import { useForm } from "react-hook-form";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { ZodType, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { capitalize } from "lodash";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { AuthAlert } from "../../components/AuthAlert";
 
 interface ISignUpData {
   firstName: string;
@@ -63,10 +66,15 @@ const zodSignUpSchema = z
 type ZodSignUpSchemaData = z.infer<typeof zodSignUpSchema>;
 
 export function AuthSignUpForm() {
+  const [formSent, setFormSent] = useState(false);
+
+  const { push } = useRouter();
+
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<ZodSignUpSchemaData>({
     resolver: zodResolver(zodSignUpSchema),
@@ -74,72 +82,103 @@ export function AuthSignUpForm() {
 
   const handleSubmitData = (data: ISignUpData) => {
     console.log("SIGNUP DATA:", data);
+
+    setFormSent(true);
+    reset();
+
+    setTimeout(() => {
+      push("/auth/login");
+    }, 5000);
   };
 
   return (
-    <Box
-      component="form"
-      noValidate
-      onSubmit={handleSubmit(handleSubmitData)}
-      sx={{ mt: 3 }}
-    >
-      <Grid container spacing={4}>
-        <AuthTextField
-          control={control}
-          autoFocus={true}
-          error={errors.firstName ? true : false}
-          helperText={errors.firstName?.message}
-          sm={6}
-          id="firstName"
-          type="text"
-          label="First name"
-          {...register("firstName")}
+    <>
+      <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmit(handleSubmitData)}
+        sx={{ mt: 3 }}
+      >
+        <Grid container spacing={4}>
+          <AuthTextField
+            control={control}
+            autoFocus={true}
+            error={errors.firstName ? true : false}
+            helperText={errors.firstName?.message}
+            sm={6}
+            id="firstName"
+            type="text"
+            label="First name"
+            {...register("firstName")}
+          />
+
+          <AuthTextField
+            control={control}
+            error={errors.lastName ? true : false}
+            helperText={errors.lastName?.message}
+            sm={6}
+            id="lastName"
+            type="text"
+            label="Last name"
+            {...register("lastName")}
+          />
+
+          <AuthTextField
+            control={control}
+            error={errors.email ? true : false}
+            helperText={errors.email?.message}
+            id="email"
+            type="email"
+            label="Email"
+            {...register("email", { required: "" })}
+          />
+
+          <AuthTextField
+            control={control}
+            error={errors.password ? true : false}
+            helperText={errors.password?.message}
+            id="password"
+            type="password"
+            label="Password"
+            {...register("password")}
+          />
+
+          <AuthTextField
+            control={control}
+            error={errors.confirmPassword ? true : false}
+            helperText={errors.confirmPassword?.message}
+            id="confirmPassword"
+            type="password"
+            label="Confirm your password"
+            {...register("confirmPassword")}
+          />
+        </Grid>
+        <AuthButton text="Sign Up" />
+
+        <AuthTextLink
+          text="Already have an account? "
+          link="login"
+          textLink="Log in"
+        />
+      </Box>
+      <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
+        <AuthAlert
+          showAlert={formSent}
+          color="success"
+          severity="success"
+          title="Sucesso"
+          message="Sua foi conta registrada com sucesso em nosso sistema !"
         />
 
-        <AuthTextField
-          control={control}
-          error={errors.lastName ? true : false}
-          helperText={errors.lastName?.message}
-          sm={6}
-          id="lastName"
-          type="text"
-          label="Last name"
-          {...register("lastName")}
+        <AuthAlert
+          showAlert={formSent}
+          timeout={3000}
+          severity="info"
+          title="Redirecionando"
+          message="Você será redirecionado para efetuar o"
+          messageHTML={<strong> login</strong>}
         />
-        <AuthTextField
-          control={control}
-          error={errors.email ? true : false}
-          helperText={errors.email?.message}
-          id="email"
-          type="email"
-          label="Email"
-          {...register("email", { required: "" })}
-        />
-        <AuthTextField
-          control={control}
-          error={errors.password ? true : false}
-          helperText={errors.password?.message}
-          id="password"
-          type="password"
-          label="Password"
-          {...register("password")}
-        />
-        <AuthTextField
-          control={control}
-          error={errors.confirmPassword ? true : false}
-          helperText={errors.confirmPassword?.message}
-          id="confirmPassword"
-          type="password"
-          label="Confirm your password"
-          {...register("confirmPassword")}
-        />
-      </Grid>
-      <AuthButton text="Sign Up" />
-      <AuthTextLink
-        text="Already have an account? "
-        link="login"
-        textLink="Log in"
-      />
-    </Box>
+      </Stack>
+    </>
   );
 }

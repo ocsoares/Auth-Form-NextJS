@@ -27,4 +27,13 @@ export const DarkTheme = createTheme({
       color: "#3D2670",
     },
   },
+  components: {
+    MuiAlert: {
+      styleOverrides: {
+        standardSuccess: {
+          backgroundColor: "#004A24",
+        },
+      },
+    },
+  },
 });

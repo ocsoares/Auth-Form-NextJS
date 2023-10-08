@@ -80,7 +80,7 @@
           "leadingUnderscore": "allow",
           "trailingUnderscore": "allow",
           "filter": {
-            "regex": "^(Cache-Control)$",
+            "regex": "^(Cache-Control|MuiAlert)$",
             "match": false
           }                  
         },
