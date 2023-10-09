@@ -6,7 +6,7 @@ interface IAuthAlertProps {
   color?: "error" | "info" | "success" | "warning";
   severity: "error" | "info" | "success" | "warning";
   title: string;
-  message: string;
+  message?: string;
   messageHTML?: ReactNode;
   timeout?: number;
 }

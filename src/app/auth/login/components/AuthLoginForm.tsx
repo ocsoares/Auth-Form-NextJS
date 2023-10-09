@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Checkbox, FormControlLabel, Grid } from "@mui/material";
+import { Box, Checkbox, FormControlLabel, Grid, Stack } from "@mui/material";
 import AuthTextField from "../../components/AuthTextField";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { z, ZodType } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
+import { AuthAlert } from "../../components/AuthAlert";
 
 interface ILoginData {
   email: string;
@@ -17,21 +18,25 @@ interface ILoginData {
 const zodLoginSchema = z.object({
   email: z
     .string({ required_error: "O email é obrigatório !" })
-    .min(1)
+    .min(1, "O email é obrigatório !")
     .email("Formato de email inválido !"),
 
-  password: z.string({ required_error: "A senha é obrigatória !" }).min(1),
+  password: z
+    .string({ required_error: "A senha é obrigatória !" })
+    .min(1, "A senha é obrigatória !"),
 }) satisfies ZodType<ILoginData>;
 
 type ZodLoginSchemaData = z.infer<typeof zodLoginSchema>;
 
 export function AuthLoginForm() {
   const [remember, setRemember] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<ZodLoginSchemaData>({
     resolver: zodResolver(zodLoginSchema),
@@ -39,6 +44,13 @@ export function AuthLoginForm() {
 
   const handleSubmitData = (data: ILoginData) => {
     console.log("LOGIN DATA:", data);
+
+    // Setar o "logged" de Acordo com a RESPOSTA de uma API se Logou
+    // com Sucesso ou NÃO !!!
+    setLogged(true);
+    reset();
+
+    console.log("LOGGED:", logged);
   };
 
   const handleCheckboxChange = () => {
@@ -51,7 +63,7 @@ export function AuthLoginForm() {
   }, [remember]);
 
   return (
-    <div>
+    <>
       <Box
         component="form"
         noValidate
@@ -85,13 +97,33 @@ export function AuthLoginForm() {
             onChange={handleCheckboxChange}
           />
         </Grid>
-        <AuthButton text="Login" />
+        {/* Colocar o "logged" depois em "disabled" quando REDIRECIONAR para uma
+            Rota PROTEGIDA !!! */}
+        <AuthButton disabled={false} text="Login" />
         <AuthTextLink
           text="Don't have an account? "
           link="signup"
           textLink="Sign up"
         />
       </Box>
-    </div>
+      <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
+        <AuthAlert
+          showAlert={logged}
+          color="success"
+          severity="success"
+          title="Sucesso"
+          message="Você logou com sucesso no sistema !"
+        />
+
+        <AuthAlert
+          showAlert={logged}
+          timeout={3000}
+          severity="info"
+          title="Redirecionando"
+          message="Você será redirecionado para a"
+          messageHTML={<strong> home</strong>}
+        />
+      </Stack>
+    </>
   );
 }
