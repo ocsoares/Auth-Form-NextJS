@@ -77,6 +77,7 @@ export function AuthSignUpForm() {
     reset,
     formState: { errors },
   } = useForm<ZodSignUpSchemaData>({
+    mode: "all",
     resolver: zodResolver(zodSignUpSchema),
   });
 
