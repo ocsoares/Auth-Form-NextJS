@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ZodLoginSchemaData } from "../types/ZodLoginSchemaData";
+import { ZodLoginSchemaType } from "../types/ZodLoginSchemaType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { zodLoginSchema } from "../schemas/zodLoginSchema";
 import { ILoginData } from "../types/ILoginData";
@@ -15,7 +15,7 @@ export const useAuthLogin = () => {
     control,
     reset,
     formState: { errors },
-  } = useForm<ZodLoginSchemaData>({
+  } = useForm<ZodLoginSchemaType>({
     resolver: zodResolver(zodLoginSchema),
   });
 

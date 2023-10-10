@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { ZodSignUpSchemaData } from "../types/ZodSignUpSchemaData";
+import { ZodSignUpSchemaType } from "../types/ZodSignUpSchemaType";
 import { zodSignUpSchema } from "../schemas/zodSignUpSchema";
 import { ISignUpData } from "../types/ISignUpData";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +17,7 @@ export const useAuthSignUp = () => {
     control,
     reset,
     formState: { errors },
-  } = useForm<ZodSignUpSchemaData>({
+  } = useForm<ZodSignUpSchemaType>({
     mode: "all",
     resolver: zodResolver(zodSignUpSchema),
   });
