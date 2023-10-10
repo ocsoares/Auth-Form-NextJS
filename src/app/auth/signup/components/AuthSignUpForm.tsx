@@ -91,12 +91,15 @@ export function AuthSignUpForm() {
         />
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
-        <AuthAlert
-          showAlert={!formSent && apiFailed}
-          severity="error"
-          title="Erro"
-          message={apiFailedMessage}
-        />
+        {/* Dentro de uma Condicional para NÃO ocupar ESPAÇO desnecessário do "Stack" */}
+        {apiFailed && (
+          <AuthAlert
+            showAlert={!formSent && apiFailed}
+            severity="error"
+            title="Erro"
+            message={apiFailedMessage}
+          />
+        )}
 
         <AuthAlert
           showAlert={formSent && !apiFailed}
