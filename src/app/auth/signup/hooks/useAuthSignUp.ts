@@ -30,7 +30,9 @@ export const useAuthSignUp = () => {
     try {
       await signUpUserService(data);
 
+      setApiFailed(false);
       setFormSent(true);
+
       reset();
 
       setTimeout(() => {
