@@ -57,7 +57,7 @@ export function AuthSignUpForm() {
             id="email"
             type="email"
             label="Email"
-            {...register("email", { required: "" })}
+            {...register("email")}
           />
 
           <AuthTextField
