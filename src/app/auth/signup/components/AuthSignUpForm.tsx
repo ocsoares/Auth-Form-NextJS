@@ -16,6 +16,8 @@ export function AuthSignUpForm() {
     errors,
     register,
     formSent,
+    apiFailed,
+    apiFailedMessage,
   } = useAuthSignUp();
 
   return (
@@ -90,7 +92,14 @@ export function AuthSignUpForm() {
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         <AuthAlert
-          showAlert={formSent}
+          showAlert={!formSent && apiFailed}
+          severity="error"
+          title="Erro"
+          message={apiFailedMessage}
+        />
+
+        <AuthAlert
+          showAlert={formSent && !apiFailed}
           color="success"
           severity="success"
           title="Sucesso"
@@ -98,7 +107,7 @@ export function AuthSignUpForm() {
         />
 
         <AuthAlert
-          showAlert={formSent}
+          showAlert={formSent && !apiFailed}
           timeout={3000}
           severity="info"
           title="Redirecionando"
