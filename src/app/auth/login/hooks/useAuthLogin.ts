@@ -16,6 +16,7 @@ export const useAuthLogin = () => {
     reset,
     formState: { errors },
   } = useForm<ZodLoginSchemaType>({
+    mode: "all",
     resolver: zodResolver(zodLoginSchema),
   });
 
