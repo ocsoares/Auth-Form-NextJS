@@ -4,63 +4,19 @@ import { Box, Checkbox, FormControlLabel, Grid, Stack } from "@mui/material";
 import AuthTextField from "../../components/AuthTextField";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
-import { useForm } from "react-hook-form";
-import { z, ZodType } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
 import { AuthAlert } from "../../components/AuthAlert";
-
-interface ILoginData {
-  email: string;
-  password: string;
-}
-
-const zodLoginSchema = z.object({
-  email: z
-    .string({ required_error: "O email é obrigatório !" })
-    .min(1, "O email é obrigatório !")
-    .email("Formato de email inválido !"),
-
-  password: z
-    .string({ required_error: "A senha é obrigatória !" })
-    .min(1, "A senha é obrigatória !"),
-}) satisfies ZodType<ILoginData>;
-
-type ZodLoginSchemaData = z.infer<typeof zodLoginSchema>;
+import { useAuthLogin } from "../hooks/useAuthLogin";
 
 export function AuthLoginForm() {
-  const [remember, setRemember] = useState(false);
-  const [logged, setLogged] = useState(false);
-
   const {
-    register,
     handleSubmit,
+    handleSubmitData,
     control,
-    reset,
-    formState: { errors },
-  } = useForm<ZodLoginSchemaData>({
-    resolver: zodResolver(zodLoginSchema),
-  });
-
-  const handleSubmitData = (data: ILoginData) => {
-    console.log("LOGIN DATA:", data);
-
-    // Setar o "logged" de Acordo com a RESPOSTA de uma API se Logou
-    // com Sucesso ou NÃO !!!
-    setLogged(true);
-    reset();
-
-    console.log("LOGGED:", logged);
-  };
-
-  const handleCheckboxChange = () => {
-    // Usar "!" em um Boolean INVERTE o Valor ATUAL do Boolean !!!!
-    setRemember(!remember);
-  };
-
-  useEffect(() => {
-    console.log("Estado do Remember:", remember);
-  }, [remember]);
+    errors,
+    register,
+    handleCheckboxChange,
+    logged,
+  } = useAuthLogin();
 
   return (
     <>
