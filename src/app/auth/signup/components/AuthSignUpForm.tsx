@@ -18,6 +18,8 @@ export function AuthSignUpForm() {
     formSent,
     apiFailed,
     apiFailedMessage,
+    emailExists,
+    emailExistsMessage,
   } = useAuthSignUp();
 
   return (
@@ -54,8 +56,8 @@ export function AuthSignUpForm() {
 
           <AuthTextField
             control={control}
-            error={errors.email ? true : false}
-            helperText={errors.email?.message}
+            error={errors.email || emailExists ? true : false}
+            helperText={errors.email?.message || emailExistsMessage}
             id="email"
             type="email"
             label="Email"

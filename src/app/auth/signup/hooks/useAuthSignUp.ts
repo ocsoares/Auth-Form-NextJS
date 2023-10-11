@@ -9,9 +9,10 @@ import { signUpUserService } from "../services/signUpUserService";
 
 export const useAuthSignUp = () => {
   const [formSent, setFormSent] = useState(false);
-
   const [apiFailed, setApiFailed] = useState(false);
   const [apiFailedMessage, setApiFailedMessage] = useState("");
+  const [emailExists, setEmailExists] = useState(false);
+  const [emailExistsMessage, setEmailExistsMessage] = useState("");
 
   const { push } = useRouter();
 
@@ -28,9 +29,18 @@ export const useAuthSignUp = () => {
 
   const handleSubmitData = async (data: ISignUpData) => {
     try {
-      await signUpUserService(data);
+      const signup = await signUpUserService(data);
+
+      if (signup.statusCode === 409) {
+        setEmailExists(true);
+        setEmailExistsMessage("Esse email já está em uso. Tente outro.");
+
+        return;
+      }
 
       setApiFailed(false);
+      setEmailExists(false);
+      setEmailExistsMessage("");
       setFormSent(true);
 
       reset();
@@ -53,5 +63,7 @@ export const useAuthSignUp = () => {
     handleSubmitData,
     apiFailed,
     apiFailedMessage,
+    emailExists,
+    emailExistsMessage,
   };
 };

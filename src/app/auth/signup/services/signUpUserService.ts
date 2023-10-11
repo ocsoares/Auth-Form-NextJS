@@ -1,6 +1,9 @@
+import { IBackendResponse } from "../../interfaces/IBackendResponse";
 import { ISignUpData } from "../types/ISignUpData";
 
-export const signUpUserService = async (data: ISignUpData) => {
+export const signUpUserService = async (
+  data: ISignUpData,
+): Promise<IBackendResponse> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_EXTERNAL_BACKEND_URL}/register`,
@@ -13,7 +16,7 @@ export const signUpUserService = async (data: ISignUpData) => {
       },
     );
 
-    return response.json();
+    return response.json() as unknown as IBackendResponse;
   } catch (error) {
     throw new Error("Erro ao efetuar o cadastro. Tente novamente mais tarde.");
   }
