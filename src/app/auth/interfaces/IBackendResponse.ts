@@ -1,5 +1,6 @@
 export interface IBackendResponse {
-  message: string;
-  error: string;
-  statusCode: number;
+  data?: object;
+  message?: string;
+  error?: string;
+  statusCode?: number;
 }
