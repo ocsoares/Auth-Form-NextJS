@@ -35,7 +35,6 @@ export const useAuthLogin = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: "/",
       });
 
       if (login?.ok) {
@@ -46,7 +45,7 @@ export const useAuthLogin = () => {
         reset();
 
         setTimeout(() => {
-          push("/home");
+          push("/send-email");
         }, 5000);
 
         return;
