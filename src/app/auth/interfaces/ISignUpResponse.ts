@@ -1,9 +1,7 @@
+import { IUser } from "./IUser";
+
 export interface ISignUpResponse {
-  data?: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  };
+  data: IUser;
   message?: string;
   error?: string;
   statusCode?: number;
