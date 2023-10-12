@@ -9,6 +9,8 @@ import { signIn } from "next-auth/react";
 
 export const useAuthLogin = () => {
   const [remember, setRemember] = useState(false);
+  const [apiFailed, setApiFailed] = useState(false);
+  const [apiFailedMessage, setApiFailedMessage] = useState("");
   const [logged, setLogged] = useState(false);
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [invalidCredentialsMessage, setInvalidCredentialsMessage] =
@@ -28,29 +30,34 @@ export const useAuthLogin = () => {
   });
 
   const handleSubmitData = async ({ email, password }: ILoginData) => {
-    const login = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-      callbackUrl: "/",
-    });
+    try {
+      const login = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/",
+      });
 
-    if (login?.ok) {
-      setLogged(true);
-      setInvalidCredentials(false);
-      setInvalidCredentialsMessage("");
+      if (login?.ok) {
+        setLogged(true);
+        setInvalidCredentials(false);
+        setInvalidCredentialsMessage("");
 
-      reset();
+        reset();
 
-      setTimeout(() => {
-        push("/home");
-      }, 5000);
+        setTimeout(() => {
+          push("/home");
+        }, 5000);
 
-      return;
+        return;
+      }
+
+      setInvalidCredentials(true);
+      setInvalidCredentialsMessage("Credencial inválida !");
+    } catch (error) {
+      setApiFailed(true);
+      setApiFailedMessage((error as Error).message);
     }
-
-    setInvalidCredentials(true);
-    setInvalidCredentialsMessage("Credencial inválida !");
   };
 
   const handleCheckboxChange = () => {
@@ -70,6 +77,8 @@ export const useAuthLogin = () => {
     errors,
     handleSubmitData,
     handleCheckboxChange,
+    apiFailed,
+    apiFailedMessage,
     invalidCredentials,
     invalidCredentialsMessage,
   };

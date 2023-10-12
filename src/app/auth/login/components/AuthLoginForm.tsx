@@ -18,6 +18,8 @@ export function AuthLoginForm() {
     logged,
     invalidCredentials,
     invalidCredentialsMessage,
+    apiFailed,
+    apiFailedMessage,
   } = useAuthLogin();
 
   return (
@@ -63,6 +65,15 @@ export function AuthLoginForm() {
         />
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
+        {apiFailed && (
+          <AuthAlert
+            showAlert={!logged && apiFailed}
+            severity="error"
+            title="Erro"
+            message={apiFailedMessage}
+          />
+        )}
+
         <AuthAlert
           showAlert={logged && !invalidCredentials}
           color="success"
