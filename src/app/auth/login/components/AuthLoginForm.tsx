@@ -87,8 +87,8 @@ export function AuthLoginForm() {
           timeout={3000}
           severity="info"
           title="Redirecionando"
-          message="Você será redirecionado para a"
-          messageHTML={<strong> home</strong>}
+          message="Você será redirecionado para"
+          messageHTML={<strong> send email</strong>}
         />
       </Stack>
     </>
