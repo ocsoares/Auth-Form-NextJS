@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="pt-BR">
-      <body style={{ position: "relative" }}>
+      <body style={{ position: "relative", minHeight: "97vh" }}>
         <AuthProvider>
           <AppThemeProvider>
             <CssBaseline />
