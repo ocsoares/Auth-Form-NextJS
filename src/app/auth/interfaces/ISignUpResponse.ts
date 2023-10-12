@@ -1,7 +1,7 @@
 import { IUser } from "./IUser";
 
 export interface ISignUpResponse {
-  data: IUser;
+  data?: IUser;
   message?: string;
   error?: string;
   statusCode?: number;
