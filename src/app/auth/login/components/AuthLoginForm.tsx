@@ -16,6 +16,8 @@ export function AuthLoginForm() {
     register,
     handleCheckboxChange,
     logged,
+    invalidCredentials,
+    invalidCredentialsMessage,
   } = useAuthLogin();
 
   return (
@@ -30,8 +32,8 @@ export function AuthLoginForm() {
           <AuthTextField
             control={control}
             autoFocus={true}
-            error={errors.email ? true : false}
-            helperText={errors.email?.message}
+            error={errors.email || invalidCredentials ? true : false}
+            helperText={errors.email?.message || invalidCredentialsMessage}
             id="email"
             type="email"
             label="Email"
@@ -39,8 +41,8 @@ export function AuthLoginForm() {
           />
           <AuthTextField
             control={control}
-            error={errors.password ? true : false}
-            helperText={errors.password?.message}
+            error={errors.password || invalidCredentials ? true : false}
+            helperText={errors.password?.message || invalidCredentialsMessage}
             id="password"
             type="password"
             label="Password"
@@ -53,9 +55,7 @@ export function AuthLoginForm() {
             onChange={handleCheckboxChange}
           />
         </Grid>
-        {/* Colocar o "logged" depois em "disabled" quando REDIRECIONAR para uma
-            Rota PROTEGIDA !!! */}
-        <AuthButton disabled={false} text="Login" />
+        <AuthButton disabled={logged} text="Login" />
         <AuthTextLink
           text="Don't have an account? "
           link="signup"
@@ -64,7 +64,7 @@ export function AuthLoginForm() {
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         <AuthAlert
-          showAlert={logged}
+          showAlert={logged && !invalidCredentials}
           color="success"
           severity="success"
           title="Sucesso"
@@ -72,7 +72,7 @@ export function AuthLoginForm() {
         />
 
         <AuthAlert
-          showAlert={logged}
+          showAlert={logged && !invalidCredentials}
           timeout={3000}
           severity="info"
           title="Redirecionando"

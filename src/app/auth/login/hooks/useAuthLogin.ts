@@ -4,10 +4,17 @@ import { ZodLoginSchemaType } from "../types/ZodLoginSchemaType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { zodLoginSchema } from "../schemas/zodLoginSchema";
 import { ILoginData } from "../types/ILoginData";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export const useAuthLogin = () => {
   const [remember, setRemember] = useState(false);
   const [logged, setLogged] = useState(false);
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const [invalidCredentialsMessage, setInvalidCredentialsMessage] =
+    useState("");
+
+  const { push } = useRouter();
 
   const {
     register,
@@ -20,13 +27,30 @@ export const useAuthLogin = () => {
     resolver: zodResolver(zodLoginSchema),
   });
 
-  const handleSubmitData = (data: ILoginData) => {
-    console.log("LOGIN DATA:", data);
+  const handleSubmitData = async ({ email, password }: ILoginData) => {
+    const login = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+      callbackUrl: "/",
+    });
 
-    // Setar o "logged" de Acordo com a RESPOSTA de uma API se Logou
-    // com Sucesso ou NÃO !!!
-    setLogged(true);
-    reset();
+    if (login?.ok) {
+      setLogged(true);
+      setInvalidCredentials(false);
+      setInvalidCredentialsMessage("");
+
+      reset();
+
+      setTimeout(() => {
+        push("/home");
+      }, 5000);
+
+      return;
+    }
+
+    setInvalidCredentials(true);
+    setInvalidCredentialsMessage("Credencial inválida !");
   };
 
   const handleCheckboxChange = () => {
@@ -46,5 +70,7 @@ export const useAuthLogin = () => {
     errors,
     handleSubmitData,
     handleCheckboxChange,
+    invalidCredentials,
+    invalidCredentialsMessage,
   };
 };
