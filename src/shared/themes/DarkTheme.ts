@@ -23,8 +23,8 @@ export const DarkTheme = createTheme({
     },
   },
   typography: {
-    h3: {
-      color: "#3D2670",
+    h6: {
+      color: grey["300"],
     },
   },
   components: {

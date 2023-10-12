@@ -1,4 +1,4 @@
-import { NavBar } from "@/shared/components/NavBar";
+import { AppBar } from "@/shared/components/AppBar";
 import { Metadata } from "next";
 import { PropsWithChildren } from "react";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function SendEmailLayout({ children }: PropsWithChildren) {
   return (
     <div>
-      <NavBar>{children}</NavBar>
+      <AppBar>{children}</AppBar>
     </div>
   );
 }
