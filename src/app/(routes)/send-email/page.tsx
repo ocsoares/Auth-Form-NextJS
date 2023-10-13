@@ -1,4 +1,4 @@
-import { PageWithAuth } from "@/shared/components/PageWithAuth";
+import { PageWithAuth } from "@/shared/components/auth/PageWithAuth";
 
 export default function SendEmailPage() {
   return (
