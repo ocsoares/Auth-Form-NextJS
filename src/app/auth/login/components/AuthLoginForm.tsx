@@ -70,7 +70,7 @@ export function AuthLoginForm() {
 
         <Divider>OR</Divider>
 
-        <Stack spacing={1.6} mt={1.2}>
+        <Stack spacing={1.6} mt={1.5}>
           <Button variant="outlined" color="secondary" startIcon={<FcGoogle />}>
             Google
           </Button>
