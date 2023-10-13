@@ -68,7 +68,7 @@ export function AuthLoginForm() {
           />
         </Grid>
 
-        <Divider>OU</Divider>
+        <Divider>OR</Divider>
 
         <Stack spacing={1.6} mt={1.2}>
           <Button variant="outlined" color="secondary" startIcon={<FcGoogle />}>
