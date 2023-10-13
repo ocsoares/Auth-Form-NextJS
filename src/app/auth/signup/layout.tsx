@@ -1,3 +1,4 @@
+import { BlocksPageIfLoggedIn } from "@/shared/components/auth/BlocksPageIfLoggedIn";
 import { Metadata } from "next";
 import { PropsWithChildren } from "react";
 
@@ -7,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignUpLayout({ children }: PropsWithChildren) {
-  return <section>{children}</section>;
+  return <BlocksPageIfLoggedIn>{children}</BlocksPageIfLoggedIn>;
 }
