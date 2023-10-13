@@ -71,13 +71,16 @@ export function AppBar({ children }: PropsWithChildren) {
                 </Button>
               </DialogActions>
             </Dialog>
+
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Logout
             </Typography>
+
             <Typography
               variant="h6"
               sx={{ mr: 2 }}
             >{`${firstName} ${lastName}`}</Typography>
+
             <Avatar
               alt="Sua foto de avatar"
               sx={{ bgcolor: deepPurple["300"] }}
