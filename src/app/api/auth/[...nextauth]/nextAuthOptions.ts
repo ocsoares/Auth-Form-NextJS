@@ -4,7 +4,7 @@ import { ILoginData } from "@/app/auth/login/types/ILoginData";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const options: NextAuthOptions = {
+export const nextAuthOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
@@ -16,6 +16,19 @@ export const options: NextAuthOptions = {
         },
       },
       // Arrumar depois esse "Promise<any>" !!!
+      // -----------------------------------------
+      // TALVEZ em "next-auth.d.ts" usar:
+      // declare module "next-auth" {
+      //   interface User {
+      //     user: IUser;
+      //     jwt: string;
+      //   }
+
+      //   interface Session {
+      //     user: User;
+      //   }
+      // }
+      // ou algo do tipo Arruma esse problema !!!
       async authorize(credentials): Promise<any> {
         const response = await loginUserService(<ILoginData>{
           email: credentials?.email,
