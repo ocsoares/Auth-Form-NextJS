@@ -1,11 +1,21 @@
 "use client";
 
-import { Box, Checkbox, FormControlLabel, Grid, Stack } from "@mui/material";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  Grid,
+  Stack,
+} from "@mui/material";
 import AuthTextField from "../../components/AuthTextField";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { AuthAlert } from "../../components/AuthAlert";
 import { useAuthLogin } from "../hooks/useAuthLogin";
+import { FcGoogle } from "react-icons/fc";
+import { GrGithub } from "react-icons/gr";
 
 export function AuthLoginForm() {
   const {
@@ -57,6 +67,19 @@ export function AuthLoginForm() {
             onChange={handleCheckboxChange}
           />
         </Grid>
+
+        <Divider>OU</Divider>
+
+        <Stack spacing={1.6} mt={1.2}>
+          <Button variant="outlined" color="secondary" startIcon={<FcGoogle />}>
+            Google
+          </Button>
+
+          <Button variant="outlined" color="secondary" startIcon={<GrGithub />}>
+            GitHub
+          </Button>
+        </Stack>
+
         <AuthButton disabled={logged} text="Login" />
         <AuthTextLink
           text="Don't have an account? "
