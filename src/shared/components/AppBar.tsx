@@ -13,8 +13,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  Skeleton,
 } from "@mui/material";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { Logout } from "@mui/icons-material";
 import { deepPurple } from "@mui/material/colors";
 import { useSessionData } from "../hooks/useSessionData";
@@ -31,6 +32,14 @@ export function AppBar({ children }: PropsWithChildren) {
     handleLogout,
     socialImage,
   } = useSessionData();
+
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (socialImage) {
+      setImageLoaded(true);
+    }
+  }, [socialImage]);
 
   return (
     <div>
@@ -77,22 +86,35 @@ export function AppBar({ children }: PropsWithChildren) {
               Logout
             </Typography>
 
-            <Typography variant="h6" sx={{ mr: 2 }}>{`${firstName} ${
-              lastName ? lastName : ""
-            }`}</Typography>
+            {/* User name */}
+            {firstName || lastName ? (
+              <Typography variant="h6" sx={{ mr: 2 }}>{`${firstName} ${
+                lastName ? lastName : ""
+              }`}</Typography>
+            ) : (
+              <Skeleton variant="text" width={160} height={38} sx={{ mr: 2 }} />
+            )}
 
-            <Avatar
-              alt="Sua foto de avatar"
-              sx={{ bgcolor: deepPurple["300"] }}
-              src={socialImage ? socialImage : undefined}
-            >
-              {!socialImage && (
+            {/* User avatar image */}
+            {imageLoaded && !firstLetterFirstName && !firstLetterLastName && (
+              <Avatar alt="Sua foto de avatar" src={socialImage as string} />
+            )}
+
+            {firstLetterFirstName && firstLetterLastName && !socialImage && (
+              <Avatar
+                alt="Sua foto de avatar"
+                sx={{ bgcolor: deepPurple["300"] }}
+              >
                 <div>
                   {firstLetterFirstName}
                   {firstLetterLastName}
                 </div>
-              )}
-            </Avatar>
+              </Avatar>
+            )}
+
+            {!imageLoaded && !firstLetterFirstName && !firstLetterLastName && (
+              <Skeleton variant="circular" width={42} height={42} />
+            )}
           </Toolbar>
         </MaterialAppBar>
       </Box>
