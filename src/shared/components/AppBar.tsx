@@ -29,6 +29,7 @@ export function AppBar({ children }: PropsWithChildren) {
     handleCloseDialogBox,
     isOpenDialogBox,
     handleLogout,
+    socialImage,
   } = useSessionData();
 
   return (
@@ -76,17 +77,21 @@ export function AppBar({ children }: PropsWithChildren) {
               Logout
             </Typography>
 
-            <Typography
-              variant="h6"
-              sx={{ mr: 2 }}
-            >{`${firstName} ${lastName}`}</Typography>
+            <Typography variant="h6" sx={{ mr: 2 }}>{`${firstName} ${
+              lastName ? lastName : ""
+            }`}</Typography>
 
             <Avatar
               alt="Sua foto de avatar"
               sx={{ bgcolor: deepPurple["300"] }}
+              src={socialImage ? socialImage : undefined}
             >
-              {firstLetterFirstName}
-              {firstLetterLastName}
+              {!socialImage && (
+                <div>
+                  {firstLetterFirstName}
+                  {firstLetterLastName}
+                </div>
+              )}
             </Avatar>
           </Toolbar>
         </MaterialAppBar>

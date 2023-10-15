@@ -7,11 +7,16 @@ export const useSessionData = () => {
 
   const { data: session } = useSession();
 
-  const firstName = session?.user.firstName;
+  const firstName = session?.user.firstName
+    ? session?.user.firstName // Credentials login
+    : session?.user.name; // Social login
+
   const lastName = session?.user.lastName;
 
   const firstLetterFirstName = first(session?.user.firstName);
   const firstLetterLastName = first(session?.user.lastName);
+
+  const socialImage = session?.user.image;
 
   const handleOpenDialogBox = () => {
     setIsOpenDialogBox(true);
@@ -36,5 +41,6 @@ export const useSessionData = () => {
     handleOpenDialogBox,
     handleCloseDialogBox,
     handleLogout,
+    socialImage,
   };
 };
