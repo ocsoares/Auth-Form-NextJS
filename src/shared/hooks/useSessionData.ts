@@ -7,11 +7,11 @@ export const useSessionData = () => {
 
   const { data: session } = useSession();
 
-  const firstName = session?.user.user.firstName;
-  const lastName = session?.user.user.lastName;
+  const firstName = session?.user.firstName;
+  const lastName = session?.user.lastName;
 
-  const firstLetterFirstName = first(session?.user.user.firstName);
-  const firstLetterLastName = first(session?.user.user.lastName);
+  const firstLetterFirstName = first(session?.user.firstName);
+  const firstLetterLastName = first(session?.user.lastName);
 
   const handleOpenDialogBox = () => {
     setIsOpenDialogBox(true);
