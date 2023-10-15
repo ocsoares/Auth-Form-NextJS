@@ -30,6 +30,7 @@ export function AuthLoginForm() {
     invalidCredentialsMessage,
     apiFailed,
     apiFailedMessage,
+    handleGoogleLoginButton,
   } = useAuthLogin();
 
   return (
@@ -71,7 +72,12 @@ export function AuthLoginForm() {
         <Divider>OR</Divider>
 
         <Stack spacing={1.6} mt={1.5}>
-          <Button variant="outlined" color="secondary" startIcon={<FcGoogle />}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            startIcon={<FcGoogle />}
+            onClick={handleGoogleLoginButton}
+          >
             Google
           </Button>
 
