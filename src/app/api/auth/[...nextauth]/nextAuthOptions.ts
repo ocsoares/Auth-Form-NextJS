@@ -1,11 +1,16 @@
-import { ILoginResponse } from "@/app/auth/interfaces/ILoginResponse";
 import { loginUserService } from "@/app/auth/login/services/loginUserService";
 import { ILoginData } from "@/app/auth/login/types/ILoginData";
+import { ISessionUserJWT } from "@/app/auth/types/ISessionUserJWT";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
     CredentialsProvider({
       credentials: {
         email: { label: "Email", type: "text", placeholder: "Email" },
@@ -35,7 +40,7 @@ export const nextAuthOptions: NextAuthOptions = {
           password: credentials?.password,
         });
 
-        if (response.data) {
+        if (response.statusCode !== 401) {
           return response;
         }
 
@@ -53,12 +58,7 @@ export const nextAuthOptions: NextAuthOptions = {
     },
 
     async session({ session, token }) {
-      const { data } = token as ILoginResponse;
-
-      session.user = {
-        user: data!.user,
-        jwt: data!.jwt,
-      };
+      session.user = token as ISessionUserJWT;
 
       return session;
     },
