@@ -1,9 +1,9 @@
-import { ISignUpResponse } from "../../interfaces/ISignUpResponse";
+import { ILoginResponse } from "../../interfaces/ILoginResponse";
 import { ILoginData } from "../types/ILoginData";
 
 export const loginUserService = async (
   data: ILoginData,
-): Promise<ISignUpResponse> => {
+): Promise<ILoginResponse> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_EXTERNAL_BACKEND_URL}/login`,
@@ -16,7 +16,7 @@ export const loginUserService = async (
       },
     );
 
-    return response.json() as unknown as ISignUpResponse;
+    return response.json() as unknown as ILoginResponse;
   } catch (error) {
     throw new Error("Erro ao efetuar o login. Tente novamente mais tarde.");
   }

@@ -1,10 +1,6 @@
 import { IUser } from "./IUser";
 
-export interface ILoginResponse {
-  data?: {
-    user: IUser;
-    jwt: string;
-  };
+export interface ILoginResponse extends Partial<IUser> {
   message?: string;
   error?: string;
   statusCode?: number;
