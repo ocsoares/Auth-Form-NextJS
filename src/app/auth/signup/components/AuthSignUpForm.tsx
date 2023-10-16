@@ -1,7 +1,7 @@
 "use client";
 
 import Grid from "@mui/material/Grid";
-import AuthTextField from "../../components/AuthTextField";
+import AppTextField from "../../../../shared/components/AppTextField";
 import { Box, Stack } from "@mui/material";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
@@ -31,7 +31,7 @@ export function AuthSignUpForm() {
         sx={{ mt: 3 }}
       >
         <Grid container spacing={4}>
-          <AuthTextField
+          <AppTextField
             control={control}
             autoFocus={true}
             error={errors.firstName ? true : false}
@@ -43,7 +43,7 @@ export function AuthSignUpForm() {
             {...register("firstName")}
           />
 
-          <AuthTextField
+          <AppTextField
             control={control}
             error={errors.lastName ? true : false}
             helperText={errors.lastName?.message}
@@ -54,7 +54,7 @@ export function AuthSignUpForm() {
             {...register("lastName")}
           />
 
-          <AuthTextField
+          <AppTextField
             control={control}
             error={errors.email || emailExists ? true : false}
             helperText={errors.email?.message || emailExistsMessage}
@@ -64,7 +64,7 @@ export function AuthSignUpForm() {
             {...register("email")}
           />
 
-          <AuthTextField
+          <AppTextField
             control={control}
             error={errors.password ? true : false}
             helperText={errors.password?.message}
@@ -74,7 +74,7 @@ export function AuthSignUpForm() {
             {...register("password")}
           />
 
-          <AuthTextField
+          <AppTextField
             control={control}
             error={errors.confirmPassword ? true : false}
             helperText={errors.confirmPassword?.message}

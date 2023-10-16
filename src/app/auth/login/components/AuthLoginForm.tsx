@@ -9,7 +9,7 @@ import {
   Grid,
   Stack,
 } from "@mui/material";
-import AuthTextField from "../../components/AuthTextField";
+import AppTextField from "../../../../shared/components/AppTextField";
 import { AuthButton } from "../../components/AuthButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { AuthAlert } from "../../components/AuthAlert";
@@ -42,7 +42,7 @@ export function AuthLoginForm() {
         sx={{ mt: 3 }}
       >
         <Grid container spacing={4}>
-          <AuthTextField
+          <AppTextField
             control={control}
             autoFocus={true}
             error={errors.email || invalidCredentials ? true : false}
@@ -52,7 +52,7 @@ export function AuthLoginForm() {
             label="Email"
             {...register("email")}
           />
-          <AuthTextField
+          <AppTextField
             control={control}
             error={errors.password || invalidCredentials ? true : false}
             helperText={errors.password?.message || invalidCredentialsMessage}

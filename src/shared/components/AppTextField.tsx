@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Control, Controller, FieldValues } from "react-hook-form";
 
-interface IAuthTextFieldProps<T extends FieldValues> {
+interface IAppTextFieldProps<T extends FieldValues> {
   control: Control<T>;
   name: string;
   sm?: number;
@@ -19,7 +19,7 @@ interface IAuthTextFieldProps<T extends FieldValues> {
   label: string;
 }
 
-const AuthTextField = React.forwardRef(function AuthTextField(
+const AppTextField = React.forwardRef(function AppTextField(
   {
     control,
     name,
@@ -30,7 +30,7 @@ const AuthTextField = React.forwardRef(function AuthTextField(
     id,
     type,
     label,
-  }: IAuthTextFieldProps<any>,
+  }: IAppTextFieldProps<any>,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ref,
 ) {
@@ -64,6 +64,6 @@ const AuthTextField = React.forwardRef(function AuthTextField(
   );
 });
 
-AuthTextField.displayName = "AuthTextField";
+AppTextField.displayName = "AppTextField";
 
-export default AuthTextField;
+export default AppTextField;
