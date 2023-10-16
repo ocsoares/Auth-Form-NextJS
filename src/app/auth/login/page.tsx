@@ -1,7 +1,7 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
 import { LockPerson } from "@mui/icons-material";
 import { AuthLoginForm } from "./components/AuthLoginForm";
-import { AuthAvatar } from "../components/AuthAvatar";
+import { AppAvatar } from "../../../shared/components/AppAvatar";
 
 export default function LoginForm() {
   return (
@@ -30,7 +30,7 @@ export default function LoginForm() {
             alignItems: "center",
           }}
         >
-          <AuthAvatar avatar={<LockPerson color="secondary" />} />
+          <AppAvatar avatar={<LockPerson color="secondary" />} />
           <Typography variant="h5">Login</Typography>
           <AuthLoginForm />
         </Box>
