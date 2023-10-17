@@ -1,6 +1,6 @@
 import { ZodType, z } from "zod";
-import { ISignUpData } from "../../interfaces/ISignUpData";
 import { capitalize } from "lodash";
+import { IZodTypeData } from "../../interfaces/IZodTypeData";
 
 export const zodSignUpSchema = z
   .object({
@@ -46,4 +46,4 @@ export const zodSignUpSchema = z
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas precisam ser iguais !",
     path: ["confirmPassword"],
-  }) satisfies ZodType<ISignUpData>;
+  }) satisfies ZodType<IZodTypeData>;
