@@ -2,12 +2,12 @@ import { PropsWithChildren } from "react";
 import { Metadata } from "next";
 import { CssBaseline } from "@mui/material";
 import { AppThemeProvider } from "@/shared/providers/AppThemeProvider";
+import { AuthProvider } from "@/shared/providers/AuthProvider";
+import { Copyright } from "@/shared/components/Copyright";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { AuthProvider } from "@/shared/providers/AuthProvider";
-import { Copyright } from "@/shared/components/Copyright";
 
 export const metadata: Metadata = {
   title: "Auth Form",
