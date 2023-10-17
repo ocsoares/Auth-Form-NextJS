@@ -42,6 +42,10 @@ export const zodSignUpSchema = z
     subjectEmail: z
       .string({ required_error: "O assunto do email é obrigatório !" })
       .min(1, "O assunto do email é obrigatório !"),
+
+    textEmail: z
+      .string({ required_error: "O texto do email é obrigatório !" })
+      .min(1, "O texto do email é obrigatório !"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas precisam ser iguais !",

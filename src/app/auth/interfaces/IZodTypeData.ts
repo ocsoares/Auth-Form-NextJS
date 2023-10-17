@@ -5,4 +5,5 @@ export interface IZodTypeData {
   password: string;
   confirmPassword: string;
   subjectEmail: string;
+  textEmail: string;
 }
