@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodSignUpSchemaType } from "../types/ZodSignUpSchemaType";
 import { zodSignUpSchema } from "../schemas/zodSignUpSchema";
-import { ISignUpData } from "../types/ISignUpData";
+import { ISignUpData } from "../../interfaces/ISignUpData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpUserService } from "../services/signUpUserService";
 

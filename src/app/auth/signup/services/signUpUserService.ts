@@ -1,5 +1,5 @@
 import { ISignUpResponse } from "../../interfaces/ISignUpResponse";
-import { ISignUpData } from "../types/ISignUpData";
+import { ISignUpData } from "../../interfaces/ISignUpData";
 
 export const signUpUserService = async (
   data: ISignUpData,
