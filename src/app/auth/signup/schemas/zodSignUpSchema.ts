@@ -1,6 +1,6 @@
 import { ZodType, z } from "zod";
 import { capitalize } from "lodash";
-import { IZodTypeData } from "../../interfaces/IZodTypeData";
+import { ISignUpData } from "../types/ISignUpData";
 
 export const zodSignUpSchema = z
   .object({
@@ -38,16 +38,8 @@ export const zodSignUpSchema = z
     confirmPassword: z
       .string({ required_error: "A confirmação de senha é obrigatória !" })
       .min(1, "A confirmação da senha é obrigatória !"),
-
-    subjectEmail: z
-      .string({ required_error: "O assunto do email é obrigatório !" })
-      .min(1, "O assunto do email é obrigatório !"),
-
-    textEmail: z
-      .string({ required_error: "O texto do email é obrigatório !" })
-      .min(1, "O texto do email é obrigatório !"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "As senhas precisam ser iguais !",
     path: ["confirmPassword"],
-  }) satisfies ZodType<IZodTypeData>;
+  }) satisfies ZodType<ISignUpData>;
