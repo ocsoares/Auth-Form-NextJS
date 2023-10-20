@@ -5,8 +5,8 @@ import AppTextField from "../../../../shared/components/AppTextField";
 import { Box, Stack } from "@mui/material";
 import { AppButton } from "../../../../shared/components/AppButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
-import { AuthAlert } from "../../components/AuthAlert";
 import { useAuthSignUp } from "../hooks/useAuthSignUp";
+import { AppAlert } from "@/shared/components/AppAlert";
 
 export function AuthSignUpForm() {
   const {
@@ -95,7 +95,7 @@ export function AuthSignUpForm() {
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         {/* Dentro de uma Condicional para NÃO ocupar ESPAÇO desnecessário do "Stack" */}
         {apiFailed && (
-          <AuthAlert
+          <AppAlert
             showAlert={!formSent && apiFailed}
             severity="error"
             title="Erro"
@@ -103,7 +103,7 @@ export function AuthSignUpForm() {
           />
         )}
 
-        <AuthAlert
+        <AppAlert
           showAlert={formSent && !apiFailed}
           color="success"
           severity="success"
@@ -111,7 +111,7 @@ export function AuthSignUpForm() {
           message="Sua foi conta registrada com sucesso em nosso sistema !"
         />
 
-        <AuthAlert
+        <AppAlert
           showAlert={formSent && !apiFailed}
           timeout={3000}
           severity="info"

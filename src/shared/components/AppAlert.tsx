@@ -1,7 +1,7 @@
 import { Alert, AlertTitle, Grow } from "@mui/material";
 import { ReactNode } from "react";
 
-interface IAuthAlertProps {
+interface IAppAlertProps {
   showAlert: boolean;
   color?: "error" | "info" | "success" | "warning";
   severity: "error" | "info" | "success" | "warning";
@@ -11,7 +11,7 @@ interface IAuthAlertProps {
   timeout?: number;
 }
 
-export function AuthAlert({
+export function AppAlert({
   showAlert,
   color,
   severity,
@@ -19,7 +19,7 @@ export function AuthAlert({
   message,
   messageHTML,
   timeout,
-}: IAuthAlertProps) {
+}: IAppAlertProps) {
   return (
     <Grow in={showAlert} timeout={timeout}>
       <Alert color={color} severity={severity}>

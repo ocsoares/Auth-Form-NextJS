@@ -12,10 +12,10 @@ import {
 import AppTextField from "../../../../shared/components/AppTextField";
 import { AppButton } from "../../../../shared/components/AppButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
-import { AuthAlert } from "../../components/AuthAlert";
 import { useAuthLogin } from "../hooks/useAuthLogin";
 import { FcGoogle } from "react-icons/fc";
 import { GrGithub } from "react-icons/gr";
+import { AppAlert } from "@/shared/components/AppAlert";
 
 export function AuthLoginForm() {
   const {
@@ -95,7 +95,7 @@ export function AuthLoginForm() {
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         {apiFailed && (
-          <AuthAlert
+          <AppAlert
             showAlert={!logged && apiFailed}
             severity="error"
             title="Erro"
@@ -103,7 +103,7 @@ export function AuthLoginForm() {
           />
         )}
 
-        <AuthAlert
+        <AppAlert
           showAlert={logged && !invalidCredentials}
           color="success"
           severity="success"
@@ -111,7 +111,7 @@ export function AuthLoginForm() {
           message="Você logou com sucesso no sistema !"
         />
 
-        <AuthAlert
+        <AppAlert
           showAlert={logged && !invalidCredentials}
           timeout={3000}
           severity="info"
