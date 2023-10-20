@@ -9,13 +9,16 @@ import { useState } from "react";
 export const useSendEmail = () => {
   const [apiFailed, setApiFailed] = useState(false);
   const [apiFailedMessage, setApiFailedMessage] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailSentTo, setEmailSentTo] = useState("");
+  const [alertOpen, setAlertOpen] = useState(false);
 
   const {
     register,
     handleSubmit,
     control,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ZodSendEmailSchemaType>({
     mode: "all",
     resolver: zodResolver(zodSendEmailSchema),
@@ -25,16 +28,24 @@ export const useSendEmail = () => {
     try {
       await sendEmailService(data);
 
-      console.log("EMAIL ENVIADO !");
-
+      setEmailSent(true);
+      setEmailSentTo(data.email_to);
+      setAlertOpen(true);
       setApiFailed(false);
       setApiFailedMessage("");
 
       reset();
     } catch (error) {
+      setEmailSent(false);
+      setEmailSentTo("");
+      setAlertOpen(false);
       setApiFailed(true);
       setApiFailedMessage((error as Error).message);
     }
+  };
+
+  const handleOnClose = () => {
+    setAlertOpen(false);
   };
 
   return {
@@ -42,8 +53,13 @@ export const useSendEmail = () => {
     handleSubmit,
     control,
     errors,
+    isSubmitting,
     handleSubmitData,
     apiFailed,
     apiFailedMessage,
+    emailSent,
+    emailSentTo,
+    alertOpen,
+    handleOnClose,
   };
 };

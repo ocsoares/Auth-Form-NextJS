@@ -5,6 +5,7 @@ interface IAppAlertProps {
   showAlert: boolean;
   color?: "error" | "info" | "success" | "warning";
   severity: "error" | "info" | "success" | "warning";
+  onClose?: () => void;
   title: string;
   message?: string;
   messageHTML?: ReactNode;
@@ -15,6 +16,7 @@ export function AppAlert({
   showAlert,
   color,
   severity,
+  onClose,
   title,
   message,
   messageHTML,
@@ -22,7 +24,7 @@ export function AppAlert({
 }: IAppAlertProps) {
   return (
     <Grow in={showAlert} timeout={timeout}>
-      <Alert color={color} severity={severity}>
+      <Alert color={color} severity={severity} onClose={onClose}>
         <AlertTitle>{title}</AlertTitle>
         {message}
         {messageHTML}
