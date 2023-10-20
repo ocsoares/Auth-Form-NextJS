@@ -1,8 +1,8 @@
-import { zodSignUpSchema } from "@/app/auth/signup/schemas/zodSignUpSchema";
-import { ZodSignUpSchemaType } from "@/app/auth/signup/types/ZodSignUpSchemaType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ISendEmailData } from "../interfaces/ISendEmailData";
+import { ISendEmailData } from "../types/ISendEmailData";
+import { ZodSendEmailSchemaType } from "../types/ZodSendEmailSchemaType";
+import { zodSendEmailSchema } from "../schemas/zodSendEmailSchema";
 
 export const useSendEmail = () => {
   const {
@@ -11,18 +11,17 @@ export const useSendEmail = () => {
     control,
     reset,
     formState: { errors },
-  } = useForm<ZodSignUpSchemaType>({
+  } = useForm<ZodSendEmailSchemaType>({
     mode: "all",
-    resolver: zodResolver(zodSignUpSchema),
+    resolver: zodResolver(zodSendEmailSchema),
   });
-
-  // TIRAR Depois !!
-  console.log("reset", reset);
 
   const handleSubmitData = (data: ISendEmailData) => {
     console.log("CLICADO !!!");
 
     console.log("DATA:", data);
+
+    reset();
   };
 
   return {

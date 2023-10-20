@@ -10,8 +10,6 @@ export function SendEmailForm() {
   const { control, errors, handleSubmit, register, handleSubmitData } =
     useSendEmail();
 
-  // ARRUMAR o Submit, NÃO tá acionando !!!
-
   return (
     <Box
       component="form"
@@ -44,8 +42,8 @@ export function SendEmailForm() {
         <AppTextArea
           control={control}
           rows={6}
-          error={errors.subjectEmail ? true : false}
-          helperText={errors.subjectEmail?.message}
+          error={errors.textEmail ? true : false}
+          helperText={errors.textEmail?.message}
           id="textEmail"
           label="Texto do email"
           {...register("textEmail")}
