@@ -1,11 +1,11 @@
 import Button from "@mui/material/Button";
 
-interface IAuthButtonProps {
+interface IAppButtonProps {
   text: string;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
-export function AuthButton({ text, disabled }: IAuthButtonProps) {
+export function AppButton({ text, disabled }: IAppButtonProps) {
   return (
     <Button
       type="submit"

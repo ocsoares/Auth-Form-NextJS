@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthButton } from "@/app/auth/components/AuthButton";
+import { AppButton } from "@/shared/components/AppButton";
 import AppTextField from "@/shared/components/AppTextField";
 import { Box, Grid } from "@mui/material";
 import { useSendEmail } from "../hooks/useSendEmail";
@@ -50,11 +50,7 @@ export function SendEmailForm() {
         />
       </Grid>
 
-      {/* ARRUMAR O BOTÃO !!! */}
-      {/* Mudar esse "AuthButton" !!! */}
-
-      {/* Fazer certo no lugar do "false" !! */}
-      <AuthButton disabled={false} text="Enviar email" />
+      <AppButton text="Enviar email" />
     </Box>
   );
 }

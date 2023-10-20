@@ -10,7 +10,7 @@ import {
   Stack,
 } from "@mui/material";
 import AppTextField from "../../../../shared/components/AppTextField";
-import { AuthButton } from "../../components/AuthButton";
+import { AppButton } from "../../../../shared/components/AppButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { AuthAlert } from "../../components/AuthAlert";
 import { useAuthLogin } from "../hooks/useAuthLogin";
@@ -86,7 +86,7 @@ export function AuthLoginForm() {
           </Button>
         </Stack>
 
-        <AuthButton disabled={logged} text="Login" />
+        <AppButton disabled={logged} text="Login" />
         <AuthTextLink
           text="Don't have an account? "
           link="signup"

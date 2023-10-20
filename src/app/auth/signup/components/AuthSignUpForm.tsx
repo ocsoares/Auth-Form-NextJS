@@ -3,7 +3,7 @@
 import Grid from "@mui/material/Grid";
 import AppTextField from "../../../../shared/components/AppTextField";
 import { Box, Stack } from "@mui/material";
-import { AuthButton } from "../../components/AuthButton";
+import { AppButton } from "../../../../shared/components/AppButton";
 import { AuthTextLink } from "../../components/AuthTextLink";
 import { AuthAlert } from "../../components/AuthAlert";
 import { useAuthSignUp } from "../hooks/useAuthSignUp";
@@ -84,7 +84,7 @@ export function AuthSignUpForm() {
             {...register("confirmPassword")}
           />
         </Grid>
-        <AuthButton disabled={formSent} text="Sign Up" />
+        <AppButton disabled={formSent} text="Sign Up" />
 
         <AuthTextLink
           text="Already have an account? "
