@@ -1,5 +1,5 @@
 export interface ISendEmailData {
-  email: string;
-  subjectEmail: string;
-  textEmail: string;
+  email_to: string;
+  subject: string;
+  text: string;
 }

@@ -21,32 +21,32 @@ export function SendEmailForm() {
         <AppTextField
           control={control}
           autoFocus={true}
-          error={errors.email ? true : false}
-          helperText={errors.email?.message}
+          error={errors.email_to ? true : false}
+          helperText={errors.email_to?.message}
           id="destinationEmail"
           type="email"
           label="Email de destino"
-          {...register("email")}
+          {...register("email_to")}
         />
 
         <AppTextArea
           control={control}
           rows={2}
-          error={errors.subjectEmail ? true : false}
-          helperText={errors.subjectEmail?.message}
+          error={errors.subject ? true : false}
+          helperText={errors.subject?.message}
           id="subjectEmail"
           label="Assunto do email"
-          {...register("subjectEmail")}
+          {...register("subject")}
         />
 
         <AppTextArea
           control={control}
           rows={6}
-          error={errors.textEmail ? true : false}
-          helperText={errors.textEmail?.message}
+          error={errors.text ? true : false}
+          helperText={errors.text?.message}
           id="textEmail"
           label="Texto do email"
-          {...register("textEmail")}
+          {...register("text")}
         />
       </Grid>
 
