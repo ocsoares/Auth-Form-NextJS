@@ -5,13 +5,16 @@ export const sendEmailService = async (
   data: ISendEmailData,
 ): Promise<ISendEmailResponse> => {
   try {
-    const response = await fetch(`${process.env.SEND_EMAIL_SERVICE_URL}/send`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_SEND_EMAIL_SERVICE_URL}/send`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    });
+    );
 
     return response.json() as unknown as ISendEmailResponse;
   } catch (error) {

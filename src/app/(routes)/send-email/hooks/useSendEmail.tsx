@@ -3,8 +3,13 @@ import { useForm } from "react-hook-form";
 import { ISendEmailData } from "../types/ISendEmailData";
 import { ZodSendEmailSchemaType } from "../types/ZodSendEmailSchemaType";
 import { zodSendEmailSchema } from "../schemas/zodSendEmailSchema";
+import { sendEmailService } from "../services/sendEmailService";
+import { useState } from "react";
 
 export const useSendEmail = () => {
+  const [apiFailed, setApiFailed] = useState(false);
+  const [apiFailedMessage, setApiFailedMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -16,12 +21,20 @@ export const useSendEmail = () => {
     resolver: zodResolver(zodSendEmailSchema),
   });
 
-  const handleSubmitData = (data: ISendEmailData) => {
-    console.log("CLICADO !!!");
+  const handleSubmitData = async (data: ISendEmailData): Promise<void> => {
+    try {
+      await sendEmailService(data);
 
-    console.log("DATA:", data);
+      console.log("EMAIL ENVIADO !");
 
-    reset();
+      setApiFailed(false);
+      setApiFailedMessage("");
+
+      reset();
+    } catch (error) {
+      setApiFailed(true);
+      setApiFailedMessage((error as Error).message);
+    }
   };
 
   return {
@@ -30,5 +43,7 @@ export const useSendEmail = () => {
     control,
     errors,
     handleSubmitData,
+    apiFailed,
+    apiFailedMessage,
   };
 };
