@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { zodLoginSchema } from "../schemas/zodLoginSchema";
 import { ILoginData } from "../types/ILoginData";
 import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 export const useAuthLogin = () => {
   const [remember, setRemember] = useState(false);
@@ -64,13 +64,12 @@ export const useAuthLogin = () => {
     setRemember(!remember);
   };
 
-  // TIRAR !!!!
-  const { data: session } = useSession();
-
-  console.log("SESSION:", session);
-
   const handleGoogleLoginButton = async () => {
     await signIn("google", { redirect: true, callbackUrl: "/send-email" });
+  };
+
+  const handleGitHubLoginButton = async () => {
+    await signIn("github", { redirect: true, callbackUrl: "/send-email" });
   };
 
   useEffect(() => {
@@ -90,5 +89,6 @@ export const useAuthLogin = () => {
     invalidCredentials,
     invalidCredentialsMessage,
     handleGoogleLoginButton,
+    handleGitHubLoginButton,
   };
 };

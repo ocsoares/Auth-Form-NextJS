@@ -31,6 +31,7 @@ export function AuthLoginForm() {
     apiFailed,
     apiFailedMessage,
     handleGoogleLoginButton,
+    handleGitHubLoginButton,
   } = useAuthLogin();
 
   return (
@@ -81,7 +82,12 @@ export function AuthLoginForm() {
             Google
           </Button>
 
-          <Button variant="outlined" color="secondary" startIcon={<GrGithub />}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            startIcon={<GrGithub />}
+            onClick={handleGitHubLoginButton}
+          >
             GitHub
           </Button>
         </Stack>
