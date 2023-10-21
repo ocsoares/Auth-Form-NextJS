@@ -76,6 +76,7 @@ export function SendEmailForm() {
 
         <AppButton disabled={isSubmitting} text="Enviar email" />
       </Box>
+
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         {apiFailed && (
           <AppAlert
