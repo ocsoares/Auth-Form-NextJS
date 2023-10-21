@@ -23,6 +23,7 @@ export function AuthLoginForm() {
     handleSubmitData,
     control,
     errors,
+    isSubmitting,
     register,
     handleCheckboxChange,
     logged,
@@ -92,7 +93,7 @@ export function AuthLoginForm() {
           </Button>
         </Stack>
 
-        <AppButton disabled={logged} text="Login" />
+        <AppButton disabled={isSubmitting || logged} text="Login" />
         <AuthTextLink
           text="Don't have an account? "
           link="signup"

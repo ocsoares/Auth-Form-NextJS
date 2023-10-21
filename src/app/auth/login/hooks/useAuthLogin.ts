@@ -23,7 +23,7 @@ export const useAuthLogin = () => {
     handleSubmit,
     control,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ZodLoginSchemaType>({
     mode: "all",
     resolver: zodResolver(zodLoginSchema),
@@ -82,6 +82,7 @@ export const useAuthLogin = () => {
     handleSubmit,
     control,
     errors,
+    isSubmitting,
     handleSubmitData,
     handleCheckboxChange,
     apiFailed,
