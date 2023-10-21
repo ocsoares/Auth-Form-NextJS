@@ -45,7 +45,7 @@ export const nextAuthOptions: NextAuthOptions = {
           password: credentials?.password,
         });
 
-        if (response.statusCode !== 401) {
+        if (response.email) {
           return response;
         }
 
