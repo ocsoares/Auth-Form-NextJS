@@ -5,6 +5,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import { TOO_MANY_REQUEST_ERROR_MESSAGE } from "@/shared/constants/tooManyRequestsErrorMessage";
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -44,6 +45,10 @@ export const nextAuthOptions: NextAuthOptions = {
           email: credentials?.email,
           password: credentials?.password,
         });
+
+        if (response.statusCode === 429) {
+          throw new Error(TOO_MANY_REQUEST_ERROR_MESSAGE);
+        }
 
         if (response.email) {
           return response;

@@ -6,6 +6,7 @@ import { zodLoginSchema } from "../schemas/zodLoginSchema";
 import { ILoginData } from "../types/ILoginData";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { TOO_MANY_REQUEST_ERROR_MESSAGE } from "@/shared/constants/tooManyRequestsErrorMessage";
 
 export const useAuthLogin = () => {
   const [remember, setRemember] = useState(false);
@@ -14,6 +15,9 @@ export const useAuthLogin = () => {
   const [logged, setLogged] = useState(false);
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const [invalidCredentialsMessage, setInvalidCredentialsMessage] =
+    useState("");
+  const [tooManyRequestError, setTooManyRequestError] = useState(false);
+  const [tooManyRequestErrorMessage, setTooManyRequestErrorMessage] =
     useState("");
 
   const { push } = useRouter();
@@ -37,6 +41,20 @@ export const useAuthLogin = () => {
         redirect: false,
       });
 
+      if (login?.error === TOO_MANY_REQUEST_ERROR_MESSAGE) {
+        setInvalidCredentials(false);
+        setInvalidCredentialsMessage("");
+
+        setTooManyRequestError(true);
+        setTooManyRequestErrorMessage(
+          "Limite de tentativas de login excedidas. Tente novamente mais tarde.",
+        );
+
+        reset();
+
+        return;
+      }
+
       if (login?.ok) {
         setLogged(true);
         setInvalidCredentials(false);
@@ -53,6 +71,8 @@ export const useAuthLogin = () => {
 
       setInvalidCredentials(true);
       setInvalidCredentialsMessage("Credencial inválida !");
+
+      reset();
     } catch (error) {
       setApiFailed(true);
       setApiFailedMessage((error as Error).message);
@@ -89,6 +109,8 @@ export const useAuthLogin = () => {
     apiFailedMessage,
     invalidCredentials,
     invalidCredentialsMessage,
+    tooManyRequestError,
+    tooManyRequestErrorMessage,
     handleGoogleLoginButton,
     handleGitHubLoginButton,
   };

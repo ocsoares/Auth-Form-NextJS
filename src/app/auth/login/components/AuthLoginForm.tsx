@@ -29,6 +29,8 @@ export function AuthLoginForm() {
     logged,
     invalidCredentials,
     invalidCredentialsMessage,
+    tooManyRequestError,
+    tooManyRequestErrorMessage,
     apiFailed,
     apiFailedMessage,
     handleGoogleLoginButton,
@@ -47,8 +49,16 @@ export function AuthLoginForm() {
           <AppTextField
             control={control}
             autoFocus={true}
-            error={errors.email || invalidCredentials ? true : false}
-            helperText={errors.email?.message || invalidCredentialsMessage}
+            error={
+              errors.email || invalidCredentials || tooManyRequestError
+                ? true
+                : false
+            }
+            helperText={
+              errors.email?.message ||
+              invalidCredentialsMessage ||
+              tooManyRequestErrorMessage
+            }
             id="email"
             type="email"
             label="Email"
@@ -56,8 +66,16 @@ export function AuthLoginForm() {
           />
           <AppTextField
             control={control}
-            error={errors.password || invalidCredentials ? true : false}
-            helperText={errors.password?.message || invalidCredentialsMessage}
+            error={
+              errors.password || invalidCredentials || tooManyRequestError
+                ? true
+                : false
+            }
+            helperText={
+              errors.password?.message ||
+              invalidCredentialsMessage ||
+              tooManyRequestErrorMessage
+            }
             id="password"
             type="password"
             label="Password"
