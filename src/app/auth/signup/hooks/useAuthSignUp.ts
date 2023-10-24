@@ -35,6 +35,8 @@ export const useAuthSignUp = () => {
         setEmailExists(true);
         setEmailExistsMessage("Esse email já está em uso. Tente outro.");
 
+        reset();
+
         return;
       }
 
