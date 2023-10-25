@@ -1,5 +1,4 @@
 import { AppBar } from "@/shared/components/AppBar";
-import { PageWithAuth } from "@/shared/components/auth/PageWithAuth";
 import { Metadata } from "next";
 import { PropsWithChildren } from "react";
 
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SendEmailLayout({ children }: PropsWithChildren) {
-  return (
-    <PageWithAuth>
-      <AppBar>{children}</AppBar>
-    </PageWithAuth>
-  );
+  return <AppBar>{children}</AppBar>;
 }
