@@ -9,7 +9,7 @@ export function CheckIfUserJwtExpired({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const checkTokenExpiration = async () => {
-      if (session) {
+      if (session && session.user.jwt) {
         try {
           const isExpiredJWT = await checkIfUserJwtExpiredService(
             session.user.jwt,
