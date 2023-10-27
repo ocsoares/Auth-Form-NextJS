@@ -7,6 +7,7 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import { TOO_MANY_REQUEST_ERROR_MESSAGE } from "@/shared/constants/tooManyRequestsErrorMessage";
 import { generateUserGoogleTokenService } from "@/app/auth/services/generateUserGoogleTokenService";
+import { generateUserGitHubTokenService } from "@/app/auth/services/generateUserGitHubTokenService";
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -68,6 +69,14 @@ export const nextAuthOptions: NextAuthOptions = {
       if (account?.provider === "google") {
         const jwt = await generateUserGoogleTokenService(
           account.id_token as string,
+        );
+
+        token.jwt = jwt;
+      }
+
+      if (account?.provider === "github") {
+        const jwt = await generateUserGitHubTokenService(
+          account.access_token as string,
         );
 
         token.jwt = jwt;

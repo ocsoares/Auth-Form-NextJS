@@ -7,8 +7,6 @@ import { PropsWithChildren, useEffect } from "react";
 export function CheckIfUserJwtExpired({ children }: PropsWithChildren) {
   const { data: session } = useSession();
 
-  console.log("Session no CheckIfUserJwtExpired:", session?.user.jwt);
-
   useEffect(() => {
     const checkTokenExpiration = async () => {
       if (session && session.user.jwt) {
@@ -23,7 +21,7 @@ export function CheckIfUserJwtExpired({ children }: PropsWithChildren) {
 
           return null;
         } catch (error) {
-          console.log("ERROR:", error);
+          console.log("Error to check if user jwt expired:", error);
         }
       }
     };
