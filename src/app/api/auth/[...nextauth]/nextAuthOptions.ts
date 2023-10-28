@@ -1,5 +1,4 @@
 import { loginUserService } from "@/app/auth/login/services/loginUserService";
-import { ILoginData } from "@/app/auth/login/types/ILoginData";
 import { ISessionUserJWT } from "@/app/auth/types/ISessionUserJWT";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -8,6 +7,7 @@ import GitHubProvider from "next-auth/providers/github";
 import { TOO_MANY_REQUEST_ERROR_MESSAGE } from "@/shared/constants/tooManyRequestsErrorMessage";
 import { generateUserGoogleTokenService } from "@/app/auth/services/generateUserGoogleTokenService";
 import { generateUserGitHubTokenService } from "@/app/auth/services/generateUserGitHubTokenService";
+import { ILoginRequestBody } from "@/app/auth/login/types/ILoginRequestBody";
 
 export const nextAuthOptions: NextAuthOptions = {
   providers: [
@@ -29,22 +29,9 @@ export const nextAuthOptions: NextAuthOptions = {
         },
         remember: { label: "Remember me", type: "checkbox" },
       },
-      // Arrumar depois esse "Promise<any>" !!!
-      // -----------------------------------------
-      // TALVEZ em "next-auth.d.ts" usar:
-      // declare module "next-auth" {
-      //   interface User {
-      //     user: IUser;
-      //     jwt: string;
-      //   }
 
-      //   interface Session {
-      //     user: User;
-      //   }
-      // }
-      // ou algo do tipo Arruma esse problema !!!
       async authorize(credentials): Promise<any> {
-        const response = await loginUserService(<ILoginData>{
+        const response = await loginUserService(<ILoginRequestBody>{
           email: credentials?.email,
           password: credentials?.password,
           remember: credentials?.remember === "true", // Next Auth forces this to be string, but it must be boolean !

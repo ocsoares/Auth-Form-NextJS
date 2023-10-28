@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import { ZodLoginSchemaType } from "../types/ZodLoginSchemaType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { zodLoginSchema } from "../schemas/zodLoginSchema";
-import { ILoginData } from "../types/ILoginData";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { TOO_MANY_REQUEST_ERROR_MESSAGE } from "@/shared/constants/tooManyRequestsErrorMessage";
+import { ILoginData } from "../types/ILoginData";
 
 export const useAuthLogin = () => {
   const [remember, setRemember] = useState(false);

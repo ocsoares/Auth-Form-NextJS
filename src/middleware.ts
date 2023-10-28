@@ -7,6 +7,10 @@ export default withAuth(
     // Only "getToken" worked !
     const session = await getToken({ req });
 
+    if (req.nextUrl.pathname === "/") {
+      return NextResponse.redirect(new URL("/auth/login", req.url));
+    }
+
     const urlStartsWithAuthLogin =
       req.nextUrl.pathname.startsWith("/auth/login");
 
@@ -34,5 +38,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/auth/login", "/auth/signup", "/send-email"],
+  matcher: ["/", "/auth/login", "/auth/signup", "/send-email"],
 };
