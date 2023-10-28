@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ZodLoginSchemaType } from "../types/ZodLoginSchemaType";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,6 +38,7 @@ export const useAuthLogin = () => {
       const login = await signIn("credentials", {
         email,
         password,
+        remember,
         redirect: false,
       });
 
@@ -91,10 +92,6 @@ export const useAuthLogin = () => {
   const handleGitHubLoginButton = async () => {
     await signIn("github", { redirect: true, callbackUrl: "/send-email" });
   };
-
-  useEffect(() => {
-    console.log("Estado do Remember:", remember);
-  }, [remember]);
 
   return {
     logged,

@@ -27,6 +27,7 @@ export const nextAuthOptions: NextAuthOptions = {
           type: "password",
           placeholder: "Password",
         },
+        remember: { label: "Remember me", type: "checkbox" },
       },
       // Arrumar depois esse "Promise<any>" !!!
       // -----------------------------------------
@@ -46,6 +47,7 @@ export const nextAuthOptions: NextAuthOptions = {
         const response = await loginUserService(<ILoginData>{
           email: credentials?.email,
           password: credentials?.password,
+          remember: credentials?.remember === "true", // Next Auth forces this to be string, but it must be boolean !
         });
 
         if (response.statusCode === 429) {
