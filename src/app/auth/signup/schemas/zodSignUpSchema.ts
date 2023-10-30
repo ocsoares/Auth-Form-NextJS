@@ -6,7 +6,7 @@ export const zodSignUpSchema = z
   .object({
     firstName: z
       .string({ required_error: "O primeiro nome é obrigatório !" })
-      .min(4, "O primeiro nome deve ter no mínimo 4 caracteres !")
+      .min(3, "O primeiro nome deve ter no mínimo 3 caracteres !")
       .transform((firstName) => {
         firstName = firstName.trim();
         firstName = firstName.replaceAll(" ", "");
@@ -17,7 +17,7 @@ export const zodSignUpSchema = z
 
     lastName: z
       .string({ required_error: "O último nome é obrigatório !" })
-      .min(4, "O último nome deve ter no mínimo 4 caracteres !")
+      .min(3, "O último nome deve ter no mínimo 3 caracteres !")
       .transform((lastName) => {
         lastName = lastName.trim();
         lastName = lastName.replaceAll(" ", "");
