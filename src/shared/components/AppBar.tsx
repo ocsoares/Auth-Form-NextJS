@@ -83,7 +83,7 @@ export function AppBar({ children }: PropsWithChildren) {
             </Dialog>
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Logout
+              Sair
             </Typography>
 
             {/* User name */}

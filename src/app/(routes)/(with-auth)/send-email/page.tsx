@@ -31,7 +31,7 @@ export default function SendEmailPage() {
           }}
         >
           <AppAvatar avatar={<Mail color="secondary" />} />
-          <Typography variant="h5">Send email</Typography>
+          <Typography variant="h5">Enviar email</Typography>
           <SendEmailForm />
         </Box>
       </Paper>
