@@ -78,18 +78,18 @@ export function AuthLoginForm() {
             }
             id="password"
             type="password"
-            label="Password"
+            label="Senha"
             {...register("password")}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="secondary" />}
-            label="Remember me"
+            label="Lembrar-me"
             sx={{ mt: 1, ml: 2.6 }}
             onChange={handleCheckboxChange}
           />
         </Grid>
 
-        <Divider>OR</Divider>
+        <Divider>OU</Divider>
 
         <Stack spacing={1.6} mt={1.5}>
           <Button
@@ -113,9 +113,9 @@ export function AuthLoginForm() {
 
         <AppButton disabled={isSubmitting || logged} text="Login" />
         <AuthTextLink
-          text="Don't have an account? "
+          text="Não tem uma conta? "
           link="signup"
-          textLink="Sign up"
+          textLink="Cadastre-se"
         />
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>

@@ -39,7 +39,7 @@ export function AuthSignUpForm() {
             sm={6}
             id="firstName"
             type="text"
-            label="First name"
+            label="Primeiro nome"
             {...register("firstName")}
           />
 
@@ -50,7 +50,7 @@ export function AuthSignUpForm() {
             sm={6}
             id="lastName"
             type="text"
-            label="Last name"
+            label="Segundo nome"
             {...register("lastName")}
           />
 
@@ -70,7 +70,7 @@ export function AuthSignUpForm() {
             helperText={errors.password?.message}
             id="password"
             type="password"
-            label="Password"
+            label="Senha"
             {...register("password")}
           />
 
@@ -80,17 +80,13 @@ export function AuthSignUpForm() {
             helperText={errors.confirmPassword?.message}
             id="confirmPassword"
             type="password"
-            label="Confirm your password"
+            label="Confirme sua senha"
             {...register("confirmPassword")}
           />
         </Grid>
-        <AppButton disabled={formSent} text="Sign Up" />
+        <AppButton disabled={formSent} text="Cadastrar" />
 
-        <AuthTextLink
-          text="Already have an account? "
-          link="login"
-          textLink="Log in"
-        />
+        <AuthTextLink text="Já tem uma conta? " link="login" textLink="Login" />
       </Box>
       <Stack spacing={2} sx={{ position: "absolute", top: 70, right: 0 }}>
         {/* Dentro de uma Condicional para NÃO ocupar ESPAÇO desnecessário do "Stack" */}

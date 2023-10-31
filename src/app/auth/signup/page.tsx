@@ -31,7 +31,7 @@ export default function SignUpForm() {
           }}
         >
           <AppAvatar avatar={<Lock color="secondary" />} />
-          <Typography variant="h5">Sign up</Typography>
+          <Typography variant="h5">Cadastrar</Typography>
           <AuthSignUpForm />
         </Box>
       </Paper>
