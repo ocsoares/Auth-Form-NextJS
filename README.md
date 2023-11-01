@@ -6,7 +6,7 @@
 
 # **Auth Form NextJS**
 
-🚀 https://auth-form-next-js.vercel.app/auth/login 🚀  
+🚀 https://auth-form-next-js.vercel.app 🚀  
 Essa é uma aplicação **FullStack** com **formulários** seguros para o cadastro, login de usuários e envio de emails, desenvolvida utilizando o framework **NextJS 13** e integrando **APIs** de um **backend próprio**.
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/neliocursos/exemplo-readme/blob/main/LICENSE)
